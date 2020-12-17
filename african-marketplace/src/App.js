@@ -1,11 +1,21 @@
-import React from 'react';
+
+import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import Login from './Login';
 import Home from './Home';
+import { connect } from 'react-redux';
+//import { fetchData } from './actions/marketActions';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function App(props) {
+
+  /*
+  useEffect(() => {
+    props.fetchData();
+  }, [])
+  */
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -26,4 +36,12 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    marketAsProps: state.data,
+    isFetching: state.isFetching,
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps, {/*fetchData */})(App);
