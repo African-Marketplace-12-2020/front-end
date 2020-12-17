@@ -7,23 +7,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-// I. Creating a store
-// 1. import { createStore } from 'redux'
-// 2. import { reducerName } from '../reducers/reducerName'
-// 3. create reducer function 
-// 4. create store variable const store = createStore(reducerName)
-// II. Add Provider
-// 1. import { Provider } from 'react-redux';
-// 2. wrap <App /> in <Provider></Provider>
-// 3. Inject store into <Provider> => <Provider store={store}></Provider>
-
-// III. Reducer 
-// 1. Create reducers directory 
-// 2. Create reducer.js in directory 
-// 3. Create initialState object, const initialState = {}
-// 4. Create a reducer function 
-// 5. pass in state = initialState, action into action function 
-
 // IV. Actions 
 // 1. Create Actions directory 
 // 2. Create actions.js in directory 

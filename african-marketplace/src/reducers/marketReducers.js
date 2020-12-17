@@ -2,7 +2,7 @@ import {
     FETCH_START, 
     FETCH_SUCCESS, 
     FETCH_FAIL 
-} from '../actions/exhibitActions';
+} from '../actions/marketActions';
 
 const initialState = {
     "data": "",
