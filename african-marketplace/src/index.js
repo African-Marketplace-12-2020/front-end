@@ -7,23 +7,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-// IV. Actions 
-// 1. Create Actions directory 
-// 2. Create actions.js in directory 
-// 3. Create actions variable, export const ACTION_NAME = 'ACTION_NAME'
-// 4. Create action function, export function actionFeature(newFeature) {}
-// 5. Pass action Creator into child component
-// export default connect (mapStateToProps, { actionCreator: actionCreatore })(Component)
-
-// V. Connect 
-// 1. create a child component 
-// 2. import { connect } from 'react-redux'
-// 3. At the bottom of the child component, add the following: 
-// export default connect(() => {}, {})(ChildComponent)
-// 4. Create mapStateToProps
-// 5. Pass mapStateToProps into connect: 
-// export default connect (mapStateToProps, {})(Component)
-
 const store = createStore(marketReducer)
 
 ReactDOM.render(
