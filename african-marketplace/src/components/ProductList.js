@@ -9,3 +9,12 @@
     /components/forms/Signup.js
     /components/forms/AddProduct.js
 */
+import React from 'react';
+
+const ProductList = () => {
+    return (
+        <div>ProductList component</div>
+    )
+}
+
+export default ProductList;

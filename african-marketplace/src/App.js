@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 //import { fetchData } from './actions/marketActions';
 import Login from './components/forms/Login';
@@ -16,10 +16,19 @@ function App(props) {
   }, [])
   */
 
+ const logout = () => {
+  //localStorage.removeItem('token');
+  }
+
   return (
     <div className="App">
         <h1>African Marketplace</h1>
         <Router>
+          <ul>
+            <li><NavLink to="/login">Login</NavLink></li>
+            <li><NavLink to="/logout" onClick={logout}>Logout</NavLink></li>
+            <li><NavLink to="/product-list">Product List</NavLink></li>
+          </ul>
           <Switch>
             <PrivateRoute exact path="/product-list" component={ProductList} />
             <Route path="/login" component={Login} />
