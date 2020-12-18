@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 //import { fetchData } from './actions/marketActions';
+import Login from './components/forms/Login';
+import Signup from './components/forms/Signup';
+import ProductList from './components/ProductList';
 import './App.css';
 
 function App(props) {
@@ -16,9 +19,9 @@ function App(props) {
     <div className="App">
         <Router>
           <Switch>
-            <PrivateRoute exact path="/protected" component={FriendsList} />
+            <PrivateRoute exact path="/product-list" component={ProductList} />
             <Route path="/login" component={Login} />
-            <Route component={Login} />
+            <Route path="/signup" component={Signup} />
           </Switch>
         </Router>
     </div>
