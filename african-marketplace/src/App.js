@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Login from './components/forms/Login';
 import Signup from './components/forms/Signup';
 import ProductList from './components/ProductList';
+import PrivateRoute from './components/PrivateRoute';
 import './App.css';
 
 function App(props) {
@@ -17,6 +18,7 @@ function App(props) {
 
   return (
     <div className="App">
+        <h1>African Marketplace</h1>
         <Router>
           <Switch>
             <PrivateRoute exact path="/product-list" component={ProductList} />
