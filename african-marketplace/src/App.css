@@ -2,15 +2,13 @@
   text-align: center;
 }
 
-li {
-  list-style: none;
-}
-
 ul {
   display: flex;
+  margin: 0 auto;
 }
 
 li {
+  list-style: none;
   flex-direction: row;
   justify-content: space-evenly;
 }

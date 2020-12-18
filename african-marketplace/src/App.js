@@ -26,7 +26,7 @@ function App(props) {
         <Router>
           <ul>
             <li><NavLink to="/login">Login</NavLink></li>
-            <li><NavLink to="/login" onClick={logout}>Logout</NavLink></li>
+            <li><NavLink to="/logout" onClick={logout}>Logout</NavLink></li>
             <li><NavLink to="/product-list">Product List</NavLink></li>
           </ul>
           <Switch>
