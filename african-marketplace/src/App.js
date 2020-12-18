@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 //import { fetchData } from './actions/marketActions';
-import logo from './logo.svg';
+import Login from './components/forms/Login';
+import Signup from './components/forms/Signup';
+import ProductList from './components/ProductList';
+import PrivateRoute from './components/PrivateRoute';
 import './App.css';
 
 function App(props) {
@@ -14,20 +18,14 @@ function App(props) {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <h1>African Marketplace</h1>
+        <Router>
+          <Switch>
+            <PrivateRoute exact path="/product-list" component={ProductList} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+          </Switch>
+        </Router>
     </div>
   );
 }
