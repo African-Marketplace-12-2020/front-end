@@ -7,7 +7,10 @@ import {
 } from '../actions/marketActions';
 
 const initialState = {
-    "data": "",
+    isLoggedIn: false,
+    userId: '',
+    token: '',
+    data: ''
 }
 
 export const marketReducer = (state = initialState, action) => {
@@ -16,7 +19,7 @@ export const marketReducer = (state = initialState, action) => {
         return {
             ...state, 
             profile: action.payload.user, 
-            formSubmitted: false
+            isLoggedIn: true
         }
     case ADD_USER: 
         return {
