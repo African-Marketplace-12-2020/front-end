@@ -1,7 +1,9 @@
 import { 
     FETCH_START, 
     FETCH_SUCCESS, 
-    FETCH_FAIL 
+    FETCH_FAIL, 
+    LOGIN,
+    ADD_USER
 } from '../actions/marketActions';
 
 const initialState = {
@@ -10,6 +12,18 @@ const initialState = {
 
 export const marketReducer = (state = initialState, action) => {
     switch(action.type) {
+    case LOGIN: 
+        return {
+            ...state, 
+            profile: action.payload.user, 
+            formSubmitted: false
+        }
+    case ADD_USER: 
+        return {
+            ...state, 
+            profile: action.payload.user, 
+            formSubmitted: false
+        }
     case FETCH_START: 
         return {
             ...state,

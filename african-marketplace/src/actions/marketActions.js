@@ -3,6 +3,10 @@ import axios from 'axios';
 export const FETCH_START = 'FFETCH_TART';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAIL = 'FETCH_FAIL';
+export const LOGIN = 'LOGIN';
+export const ADD_USER = 'ADD_USER';
+export const UPDATE_USER = 'UPDATE_USER';
+export const FORM_SUBMISSION_STATUS = 'FORM_SUBMISSION_STATE';
 
 export const fetchData = () => dispatch => {
     /*
