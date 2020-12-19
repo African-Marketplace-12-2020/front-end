@@ -1,13 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
+import thunk from 'redux-thunk';
 import { marketReducer } from './reducers/marketReducers';
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const store = createStore(marketReducer)
+//consider importing combineReducers from 'redux' 
+/**
+ * You can set it up as follows:
+ * import profile from '../reducers/profile' or wherever you have it
+ * 
+ * const rootReducer = combineReducers({
+ *  user: profile
+ * })
+ */
+
+const store = createStore(
+  marketReducer,
+  applyMiddleware(thunk)
+)
 
 ReactDOM.render(
   <React.StrictMode>
