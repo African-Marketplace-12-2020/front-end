@@ -1,5 +1,7 @@
 import React, {useState } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { login } from '../../actions/marketActions';
 
 const Login = () => {
     const [credentials, setCredentials] = useState([

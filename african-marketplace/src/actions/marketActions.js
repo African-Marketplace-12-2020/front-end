@@ -22,3 +22,14 @@ export const fetchData = () => dispatch => {
     }, 3000);
     */
   };
+
+  export const login = (credentials) => (dispatch) => {
+    let logIn = credentials;
+    axios
+    .post('http://localhost:3000/users', logIn)
+    .then(res => {
+        const data = res.data
+      dispatch({ type: LOGIN, payload: data })
+    })
+    .catch( err => dispatch({ type: LOGIN_FAIL, payload: err }))
+  }
