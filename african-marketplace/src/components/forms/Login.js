@@ -1,7 +1,8 @@
 import React, {useState } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { login } from '../../actions/marketActions';
 
-const Login = () => {
+const Login = (props) => {
     const [credentials, setCredentials] = useState([
         {
             username: '',
@@ -19,23 +20,23 @@ const Login = () => {
         })
     }
 
-    const login = e => {
+    console.log(props)
+    const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:5000/api/login", credentials)
-            .then(res => {
-                //localStorage.setItem('token', res.data.payload)
-                //this.props.history.push('/product-list')
-                console.log(res.data)
-            })
-            .catch(err => {
-                console.log(err.response);
-            })
+        login(credentials);
+        props.history.push('/product-list')
+        setCredentials({
+            credentials: {
+                username: '',
+                password: ''
+            }
+        })
     }
 
     return (
         <div>
             <h1>Login component</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input  
                     placeholder='Username' 
                     type="text"
@@ -56,4 +57,14 @@ const Login = () => {
     )
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+      userId: state.data,
+      isLoggedIn: state.isFetching,
+      error: state.error,
+      token: state.data
+    }
+  }
+  
+  export default connect(mapStateToProps, {login})(Login);

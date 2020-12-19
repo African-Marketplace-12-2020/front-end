@@ -3,6 +3,11 @@ import axios from 'axios';
 export const FETCH_START = 'FFETCH_TART';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAIL = 'FETCH_FAIL';
+export const LOGIN = 'LOGIN';
+export const ADD_USER = 'ADD_USER';
+export const UPDATE_USER = 'UPDATE_USER';
+export const FORM_SUBMISSION_STATUS = 'FORM_SUBMISSION_STATE';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
 
 export const fetchData = () => dispatch => {
     /*
@@ -18,3 +23,15 @@ export const fetchData = () => dispatch => {
     }, 3000);
     */
   };
+
+  export const login = (credentials) => (dispatch) => {
+    let logIn = credentials;
+    axios
+    .post('http://localhost:3000/users', logIn)
+    .then(res => {
+        const data = res.data
+        localStorage.setItem('token', data.payload)
+        dispatch({ type: LOGIN, payload: data })
+    })
+    .catch( err => dispatch({ type: LOGIN_FAIL, payload: err }))
+  }
