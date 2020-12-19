@@ -40,10 +40,12 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
-    marketAsProps: state.data,
-    isFetching: state.isFetching,
-    error: state.error
+    userId: state.data,
+    isLoggedIn: state.isFetching,
+    error: state.error,
+    token: state.data
   }
 }
 

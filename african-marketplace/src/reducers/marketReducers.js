@@ -11,7 +11,7 @@ const initialState = {
     isLoggedIn: false,
     userId: '',
     token: '',
-    data: ''
+    error: ''
 }
 
 export const marketReducer = (state = initialState, action) => {

@@ -2,22 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-//import { marketReducer, savedState, storeState, reducer } from './reducers';
+import { marketReducer } from './reducers/marketReducers';
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { marketReducer } from './reducers/marketReducers';
-import { savedState } from './reducers/savedState';
-import { storeState } from './reducers/storeState';
-import { reducer } from './reducers/reducer';
-
-const rootReducer = combineReducers({
-  marketReducer, 
-  savedState, 
-  storeState, 
-  reducer
-})
 
 //consider importing combineReducers from 'redux' 
 /**
@@ -30,7 +19,7 @@ const rootReducer = combineReducers({
  */
 
 const store = createStore(
-  rootReducer,
+  marketReducer,
   applyMiddleware(thunk)
 )
 
