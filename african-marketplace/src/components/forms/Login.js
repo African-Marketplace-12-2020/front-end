@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import { login } from '../../actions/marketActions';
 
@@ -18,9 +19,8 @@ const Login = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(credentials)
         login(credentials);
-        props.history.push('/product-list')
+        //props.history.push('/product-list')
         setCredentials({
             credentials: {
                 username: '',
@@ -31,6 +31,7 @@ const Login = (props) => {
     //1. test login, console credentials
     //2. test marketActions, console credentials and data 
     //3. test marketReducer, console action.payload
+    
     return (
         <div>
             <h1>Login component</h1>
@@ -39,14 +40,14 @@ const Login = (props) => {
                     placeholder='Username' 
                     type="text"
                     name="username"
-                    value={credentials.username}
+                    value={credentials.username || ''}
                     onChange={handleChange}
                 />
                 <input 
                     placeholder='Password' 
                     type="password"
                     name="password"
-                    value={credentials.password}
+                    value={credentials.password || ''}
                     onChange={handleChange}
                 />
                 <button>Login</button>
@@ -57,15 +58,18 @@ const Login = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-    credentials: {
-        username: state.data,
-        password: state.data
-    },
-      userId: state.data,
-      isLoggedIn: state.isFetching,
-      error: state.error,
-      token: state.data
+        credentials: {
+            username: state.credentials.username,
+            password: state.credentials.password
+        },
+        isLoggedIn: state.isLoggedIn,
+        error: state.error,
+        token: state.token
     }
   }
   
-  export default connect(mapStateToProps, {login})(Login);
+  export default withRouter(
+    connect(() => {
+        return {}
+    }, {login})(Login)
+  );

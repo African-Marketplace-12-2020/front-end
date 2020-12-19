@@ -19,8 +19,8 @@ const initialState = {
     error: ''
 }
 
-export const marketReducer = (state = initialState, action) => {
-    console.log(action)
+export default function (state = initialState, action) {
+    console.log(initialState)
     switch(action.type) {
     case LOGIN_START: 
         return {
@@ -50,7 +50,7 @@ export const marketReducer = (state = initialState, action) => {
             ...state, 
             isFetching: false,
             data: action.payload,
-            error: ''
+            error: null
         }
     case FETCH_FAIL:
         return {
@@ -62,7 +62,7 @@ export const marketReducer = (state = initialState, action) => {
                 ...state,
                 error: action.payload,
                 isLoggedIn: false, 
-                error: action.payload.message
+                error: action.payload
             }
         default: 
             return state
