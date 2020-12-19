@@ -27,7 +27,7 @@ export const fetchData = () => dispatch => {
   export const login = (credentials) => (dispatch) => {
     let logIn = credentials;
     axios
-    .post('http://localhost:3000/users', logIn)
+    .post('https://reqres.in/api/login', logIn)
     .then(res => {
         const data = res.data
         localStorage.setItem('token', data.payload)
