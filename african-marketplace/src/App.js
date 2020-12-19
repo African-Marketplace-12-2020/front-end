@@ -31,7 +31,7 @@ function App(props) {
           </ul>
           <Switch>
             <PrivateRoute exact path="/product-list" component={ProductList} />
-            <Route path="/login" component={Login} />
+            <Route path="/login" component={props => <Login {...props} />} />
             <Route path="/signup" component={Signup} />
           </Switch>
         </Router>
@@ -40,7 +40,6 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     userId: state.data,
     isLoggedIn: state.isFetching,

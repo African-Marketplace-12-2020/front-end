@@ -2,12 +2,17 @@ import {
     FETCH_START, 
     FETCH_SUCCESS, 
     FETCH_FAIL, 
-    LOGIN,
+    LOGIN_START,
+    LOGIN_SUCCESS,
     ADD_USER,
     LOGIN_FAIL
 } from '../actions/marketActions';
 
 const initialState = {
+    credentials: {
+        username: '',
+        password: ''
+    },
     isLoggedIn: false,
     userId: '',
     token: '',
@@ -15,12 +20,18 @@ const initialState = {
 }
 
 export const marketReducer = (state = initialState, action) => {
+    console.log(action)
     switch(action.type) {
-    case LOGIN: 
+    case LOGIN_START: 
         return {
             ...state, 
-            data: action.payload.user, 
             isLoggedIn: true
+        }
+    case LOGIN_SUCCESS: 
+        return {
+            ...state, 
+            isLoggedIn: false, 
+            error: null
         }
     case ADD_USER: 
         return {
@@ -49,7 +60,9 @@ export const marketReducer = (state = initialState, action) => {
     case LOGIN_FAIL:
             return {
                 ...state,
-                error: action.payload
+                error: action.payload,
+                isLoggedIn: false, 
+                error: action.payload.message
             }
         default: 
             return state

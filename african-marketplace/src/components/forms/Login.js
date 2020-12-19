@@ -1,28 +1,24 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/marketActions';
 
 const Login = (props) => {
-    const [credentials, setCredentials] = useState([
-        {
+    const [credentials, setCredentials] = useState({
             username: '',
             password: ''
-        }
-    ])
+        })
 
     const handleChange = e => {
         e.preventDefault();
         setCredentials({
-            credentials: {
-                ...credentials,
-                [e.target.name]: e.target.value
-            }
+            ...credentials,
+            [e.target.name]: e.target.value
         })
     }
 
-    console.log(props)
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(credentials)
         login(credentials);
         props.history.push('/product-list')
         setCredentials({
@@ -32,7 +28,9 @@ const Login = (props) => {
             }
         })
     }
-
+    //1. test login, console credentials
+    //2. test marketActions, console credentials and data 
+    //3. test marketReducer, console action.payload
     return (
         <div>
             <h1>Login component</h1>
@@ -58,8 +56,11 @@ const Login = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
+    credentials: {
+        username: state.data,
+        password: state.data
+    },
       userId: state.data,
       isLoggedIn: state.isFetching,
       error: state.error,

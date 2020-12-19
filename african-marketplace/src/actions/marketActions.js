@@ -1,9 +1,11 @@
 import axios from 'axios';
+//import axiosWithAuth from '../utils/axiosWithAuth';
 
 export const FETCH_START = 'FFETCH_TART';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAIL = 'FETCH_FAIL';
-export const LOGIN = 'LOGIN';
+export const LOGIN_START = 'LOGIN_START';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const ADD_USER = 'ADD_USER';
 export const UPDATE_USER = 'UPDATE_USER';
 export const FORM_SUBMISSION_STATUS = 'FORM_SUBMISSION_STATE';
@@ -25,13 +27,18 @@ export const fetchData = () => dispatch => {
   };
 
   export const login = (credentials) => (dispatch) => {
+    console.log("Say anything...")
     let logIn = credentials;
+    dispatch({ type: LOGIN_START })
     axios
     .post('https://reqres.in/api/login', logIn)
     .then(res => {
+        const token = res.data.token;
         const data = res.data
-        localStorage.setItem('token', data.payload)
-        dispatch({ type: LOGIN, payload: data })
+        console.log(data)
+        localStorage.setItem('token', token)
+        //dispatch({ type: LOGIN, payload: data })
+        dispatch({ type: LOGIN_SUCCESS })
     })
     .catch( err => dispatch({ type: LOGIN_FAIL, payload: err }))
   }
