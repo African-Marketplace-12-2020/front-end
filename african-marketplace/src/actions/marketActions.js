@@ -30,7 +30,8 @@ export const fetchData = () => dispatch => {
     .post('http://localhost:3000/users', logIn)
     .then(res => {
         const data = res.data
-      dispatch({ type: LOGIN, payload: data })
+        localStorage.setItem('token', data.payload)
+        dispatch({ type: LOGIN, payload: data })
     })
     .catch( err => dispatch({ type: LOGIN_FAIL, payload: err }))
   }

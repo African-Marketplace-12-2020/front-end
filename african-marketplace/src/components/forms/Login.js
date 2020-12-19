@@ -24,6 +24,7 @@ const Login = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         login(credentials);
+        props.history.push('/product-list')
         setCredentials({
             credentials: {
                 username: '',
