@@ -7,7 +7,7 @@ import Signup from './components/forms/Signup';
 import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import PrivateRoute from './components/PrivateRoute';
-//import './App.css';
+import './App.css';
 
 function App(props) {
 
@@ -19,7 +19,7 @@ function App(props) {
 
   return (
     <div className="App">
-        <h1>African Marketplace</h1>
+        <h1 className="AppTitle">African Marketplace</h1>
         <Router>
           <Navbar {...props} />
           <Switch>

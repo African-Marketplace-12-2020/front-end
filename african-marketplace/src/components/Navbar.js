@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import styled from "styled-components";
 const Container = styled.nav`

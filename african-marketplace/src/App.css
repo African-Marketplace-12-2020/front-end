@@ -1,21 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 .App {
-  text-align: center;
+  text-align: left;
   margin: 0;
-  padding: 0 2rem;
 }
 
-ul {
-  display: flex;
-  margin: 0 2rem;
-  width: 60%;
-  height: 5rem;
-  background-color: #e8e8e8;
-  border-radius: 10px;
+.AppTitle {
+  font-family: 'Monoton', cursive;
 }
-
-li {
-  list-style: none;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin: 0 5px;
+h1 {
+  padding: 1rem;
 }
