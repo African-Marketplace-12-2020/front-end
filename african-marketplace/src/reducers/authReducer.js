@@ -13,6 +13,7 @@ const initialState = {
         username: '',
         password: ''
     },
+    data: [],
     isLoggedIn: false,
     userId: '',
     user: '',
@@ -32,6 +33,7 @@ export default function (state = initialState, action) {
         return {
             ...state, 
             isLoggedIn: false, 
+            data: action.payload,
             error: null
         }
     case LOGIN_FAIL:
@@ -50,6 +52,7 @@ export default function (state = initialState, action) {
     case REGISTER_SUCCESS: 
             return {
                 ...state, 
+                data: action.payload,
                 isLoggedIn: false
             };
     case REGISTER_FAIL:

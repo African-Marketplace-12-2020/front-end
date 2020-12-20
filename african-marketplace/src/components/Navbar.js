@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { NavLink, Redirect } from 'react-router-dom';
+
 import styled from "styled-components";
 const Container = styled.nav`
   height: 10vh;
@@ -52,7 +54,7 @@ const NavLinks = styled.ul`
   }
 `;
 
-export default function Navbar() {
+export default function Navbar(props) {
   const [display, setDisplay] = useState(false);
   const toggleDisplay = () => {
     if (display) {
@@ -61,6 +63,13 @@ export default function Navbar() {
       setDisplay(true);
     }
   };
+
+  const logout = () => {
+    //localStorage.removeItem('token');
+    //props.history.push('/login')
+    }
+
+
   return (
     <Container>
       <Hamburguer onClick={() => toggleDisplay()}>
@@ -69,26 +78,14 @@ export default function Navbar() {
         <Line />
       </Hamburguer>
       <NavLinks display={display}>
-        <li>
-          <a
-            style={{ color: "white", textDecoration: "none", fontSize: "16px" }}
-            href="#">
-            Home
-          </a>
+        <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
+          <NavLink to="/login">Login</NavLink>
         </li>
-        <li>
-          <a
-            style={{ color: "white", textDecoration: "none", fontSize: "16px" }}
-            href="#">
-            About
-          </a>
+        <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
+            <NavLink to="/login" onClick={logout}>Logout</NavLink>
         </li>
-        <li>
-          <a
-            style={{ color: "white", textDecoration: "none", fontSize: "16px" }}
-            href="#">
-            Links
-          </a>
+        <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
+            <NavLink to="/product-list">Product List</NavLink>
         </li>
       </NavLinks>
     </Container>

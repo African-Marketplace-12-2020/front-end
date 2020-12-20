@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 //import { fetchData } from './actions/marketActions';
 import Login from './components/forms/Login';
 import Signup from './components/forms/Signup';
+import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import PrivateRoute from './components/PrivateRoute';
-import './App.css';
+//import './App.css';
 
 function App(props) {
 
@@ -16,19 +17,11 @@ function App(props) {
   }, [])
   */
 
- const logout = () => {
-  //localStorage.removeItem('token');
-  }
-
   return (
     <div className="App">
         <h1>African Marketplace</h1>
         <Router>
-          <ul>
-            <li><NavLink to="/login">Login</NavLink></li>
-            <li><NavLink to="/logout" onClick={logout}>Logout</NavLink></li>
-            <li><NavLink to="/product-list">Product List</NavLink></li>
-          </ul>
+          <Navbar {...props} />
           <Switch>
             <PrivateRoute exact path="/product-list" component={ProductList} />
             <Route path="/login" component={props => <Login {...props} />} />

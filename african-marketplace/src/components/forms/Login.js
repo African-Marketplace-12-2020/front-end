@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
 import { login } from '../../actions/marketActions';
 
@@ -55,19 +55,13 @@ const Login = (props) => {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
-        credentials: {
-            username: state.credentials.username,
-            password: state.credentials.password
-        },
         isLoggedIn: state.isLoggedIn,
         error: state.error,
         token: state.token
     }
   }
   
-  export default withRouter(
-    connect(() => {
-        return {}
-    }, {login})(Login)
-  );
+  export default connect(mapStateToProps, {login})(Login)
+  
