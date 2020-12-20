@@ -39,15 +39,12 @@ export const fetchData = () => dispatch => {
     console.log("Say anything...")
     let logIn = credentials;
     dispatch({ type: LOGIN_START })
-    axios
-    .post('https://reqres.in/api/login', logIn)
+    return axios.post('https://reqres.in/api/login', logIn)
     .then(res => {
         const token = res.data.token;
         const data = res.data
-        console.log(data)
         localStorage.setItem('token', token)
-        //dispatch({ type: LOGIN, payload: data })
-        dispatch({ type: LOGIN_SUCCESS })
+        dispatch({ type: LOGIN_SUCCESS, payload: token })
     })
     .catch( err => dispatch({ type: LOGIN_FAIL, payload: err }))
   }

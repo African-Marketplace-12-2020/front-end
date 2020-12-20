@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/marketActions';
 
 const Login = (props) => {
+    console.log(props)
     const [credentials, setCredentials] = useState({
             username: '',
             password: ''
@@ -19,7 +20,7 @@ const Login = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        login(credentials);
+        props.login(credentials);
         //props.history.push('/product-list')
         setCredentials({
             credentials: {
@@ -28,10 +29,7 @@ const Login = (props) => {
             }
         })
     }
-    //1. test login, console credentials
-    //2. test marketActions, console credentials and data 
-    //3. test marketReducer, console action.payload
-    
+
     return (
         <div>
             <h1>Login component</h1>

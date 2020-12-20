@@ -32,7 +32,7 @@ function App(props) {
           <Switch>
             <PrivateRoute exact path="/product-list" component={ProductList} />
             <Route path="/login" component={props => <Login {...props} />} />
-            <Route path="/signup" component={Signup} />
+            <Route path="/signup" component={props => <Signup {...props} />} />
           </Switch>
         </Router>
     </div>
