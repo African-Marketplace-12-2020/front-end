@@ -2,26 +2,18 @@ import {
     FETCH_START, 
     FETCH_SUCCESS, 
     FETCH_FAIL, 
-    LOGIN,
     ADD_USER,
-    LOGIN_FAIL
+    UPDATE_USER,
+    SET_MESSAGE,
+    CLEAR_MESSAGE
 } from '../actions/marketActions';
 
 const initialState = {
-    isLoggedIn: false,
-    userId: '',
-    token: '',
-    error: ''
+    data: ''
 }
 
-export const marketReducer = (state = initialState, action) => {
+export default function (state = initialState, action) {
     switch(action.type) {
-    case LOGIN: 
-        return {
-            ...state, 
-            data: action.payload.user, 
-            isLoggedIn: true
-        }
     case ADD_USER: 
         return {
             ...state, 
@@ -39,18 +31,13 @@ export const marketReducer = (state = initialState, action) => {
             ...state, 
             isFetching: false,
             data: action.payload,
-            error: ''
+            error: null
         }
     case FETCH_FAIL:
         return {
             ...state,
             error: action.payload
         }
-    case LOGIN_FAIL:
-            return {
-                ...state,
-                error: action.payload
-            }
         default: 
             return state
     }

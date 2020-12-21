@@ -1,25 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { marketReducer } from './reducers/marketReducers';
+import rootReducer from './reducers';
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-//consider importing combineReducers from 'redux' 
-/**
- * You can set it up as follows:
- * import profile from '../reducers/profile' or wherever you have it
- * 
- * const rootReducer = combineReducers({
- *  user: profile
- * })
- */
-
 const store = createStore(
-  marketReducer,
+  rootReducer,
   applyMiddleware(thunk)
 )
 
