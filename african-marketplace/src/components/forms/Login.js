@@ -29,7 +29,7 @@ export const Input = styled.input`
 `;
 
 const Login = (props) => {
-    console.log(props)
+    console.log(props.isLoggedIn)
     const [credentials, setCredentials] = useState({
             username: '',
             password: ''
@@ -46,13 +46,14 @@ const Login = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         props.login(credentials);
-        //props.history.push('/product-list')
+        
         setCredentials({
             credentials: {
                 username: '',
                 password: ''
             }
         })
+        props.history.push('/product-list')
     }
 
     return (
