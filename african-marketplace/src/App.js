@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch,
+	NavLink,
+} from 'react-router-dom';
 import { connect } from 'react-redux';
 //import { fetchData } from './actions/marketActions';
 import Login from './components/forms/Login';
@@ -7,11 +12,11 @@ import Signup from './components/forms/Signup';
 import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import PrivateRoute from './components/PrivateRoute';
+import NavBar from './components/Navbar';
 import './App.css';
 
 function App(props) {
-
-  /*
+	/*
   useEffect(() => {
     props.fetchData();
   }, [])
@@ -41,4 +46,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {/*fetchData */})(App);
+export default connect(mapStateToProps, {
+	/*fetchData */
+})(App);
