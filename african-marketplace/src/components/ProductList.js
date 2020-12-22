@@ -5,7 +5,6 @@
     Navbar.js
     SavedItem.js
 
-    /components/forms/Signup.js
     /components/forms/AddProduct.js
 */
 import React from 'react';
