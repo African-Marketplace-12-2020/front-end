@@ -1,15 +1,25 @@
 import { 
     FETCH_START, 
     FETCH_SUCCESS, 
-    FETCH_FAIL 
+    FETCH_FAIL, 
+    ADD_USER,
+    UPDATE_USER,
+    SET_MESSAGE,
+    CLEAR_MESSAGE
 } from '../actions/marketActions';
 
 const initialState = {
-    "data": "",
+    data: ''
 }
 
-export const marketReducer = (state = initialState, action) => {
+export default function (state = initialState, action) {
     switch(action.type) {
+    case ADD_USER: 
+        return {
+            ...state, 
+            profile: action.payload.user, 
+            formSubmitted: false
+        }
     case FETCH_START: 
         return {
             ...state,
@@ -21,7 +31,7 @@ export const marketReducer = (state = initialState, action) => {
             ...state, 
             isFetching: false,
             data: action.payload,
-            error: ''
+            error: null
         }
     case FETCH_FAIL:
         return {

@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 //import { fetchData } from './actions/marketActions';
 import Login from './components/forms/Login';
 import Signup from './components/forms/Signup';
+import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import PrivateRoute from './components/PrivateRoute';
 import NavBar from './components/Navbar';
@@ -21,45 +22,29 @@ function App(props) {
   }, [])
   */
 
-	const logout = () => {
-		//localStorage.removeItem('token');
-	};
-
-	return (
-		<div className='App'>
-			<h1>African Marketplace</h1>
-			<Router>
-				<NavBar />
-				{/* <ul>
-					<li>
-						<NavLink to='/login'>Login</NavLink>
-					</li>
-					<li>
-						<NavLink to='/logout' onClick={logout}>
-							Logout
-						</NavLink>
-					</li>
-					<li>
-						<NavLink to='/product-list'>Product List</NavLink>
-					</li>
-				</ul> */}
-				<Switch>
-					<PrivateRoute exact path='/product-list' component={ProductList} />
-					<Route path='/login' component={Login} />
-					<Route path='/signup' component={Signup} />
-				</Switch>
-			</Router>
-		</div>
-	);
+  return (
+    <div className="App">
+        <h1 className="AppTitle">African Marketplace</h1>
+        <Router>
+          <Navbar {...props} />
+          <Switch>
+            <PrivateRoute exact path="/product-list" component={ProductList} />
+            <Route path="/login" component={props => <Login {...props} />} />
+            <Route path="/signup" component={props => <Signup {...props} />} />
+          </Switch>
+        </Router>
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => {
-	return {
-		marketAsProps: state.data,
-		isFetching: state.isFetching,
-		error: state.error,
-	};
-};
+  return {
+    userId: state.data,
+    isLoggedIn: state.isFetching,
+    error: state.error,
+    token: state.data
+  }
+}
 
 export default connect(mapStateToProps, {
 	/*fetchData */
