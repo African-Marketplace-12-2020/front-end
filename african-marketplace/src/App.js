@@ -27,10 +27,8 @@ function App(props) {
           <ul>
             <li><NavLink to="/login">Login</NavLink></li>
             <li><NavLink to="/logout" onClick={logout}>Logout</NavLink></li>
-            <li><NavLink to="/product-list">Product List</NavLink></li>
           </ul>
           <Switch>
-            <PrivateRoute exact path="/product-list" component={ProductList} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
           </Switch>
