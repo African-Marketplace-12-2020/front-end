@@ -48,3 +48,17 @@ export const fetchData = () => dispatch => {
     })
     .catch( err => dispatch({ type: LOGIN_FAIL, payload: err }))
   }
+
+  export const signup = (signup) => (dispatch) => {
+    let registration = signup;
+
+    return axios.post('https://reqres.in/api/register', registration)
+    .then(res => {
+        const token = res.data.token;
+        const data = res.data;
+        console.log(res)
+        localStorage.setItem('token', token)
+        dispatch({ type: REGISTER_SUCCESS, payload: data })
+    })
+    .catch( err => dispatch({ type: REGISTER_FAIL, payload: err }))
+  }

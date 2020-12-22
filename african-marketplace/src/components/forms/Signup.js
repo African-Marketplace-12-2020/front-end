@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../actions/marketActions';
+import { signup } from '../../actions/marketActions';
 import styled from "styled-components";
 
 export const FormGroup = styled.form`
@@ -32,28 +32,30 @@ export const Input = styled.input`
 `;
 
 const Signup = (props) => {
-    console.log(props.isLoggedIn)
-    const [firstName, setFirstName] = useState('')
-    const [username, setUserName] = useState('')
-    const [password, setPassword] = useState('')
+    console.log(props)
+    const [signup, setSignup] = useState({
+        firstName: '',
+        username: '',
+        password: '',
+    })
 
 
-    const handleChangeFirstName = e => {
+    const handleSignupChange = e => {
         e.preventDefault();
-        setCredentials({
-            ...credentials,
+        setSignup({
+            ...signup,
             [e.target.name]: e.target.value
         })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.login(credentials);
-        
-        setCredentials({
-            credentials: {
+        props.signup(signup);
+        setSignup({
+            signup: {
+                firstName: '',
                 username: '',
-                password: ''
+                password: '',
             }
         })
         props.history.push('/product-list')
@@ -67,22 +69,22 @@ const Signup = (props) => {
                 placeholder='Username' 
                 type="text"
                 name="username"
-                value={credentials.username || ''}
-                onChange={handleChange}
+                value={signup.username || ''}
+                onChange={handleSignupChange}
             />
-            <Input id="label" 
+            <Input  
                 placeholder='firstName' 
                 type="text"
                 name="firstname"
-                value={credentials.firstname || ''}
-                onChange={handleChange}
+                value={signup.firstname || ''}
+                onChange={handleSignupChange}
             />
             <Input 
                 placeholder='Password' 
                 type="password"
                 name="password"
-                value={credentials.password || ''}
-                onChange={handleChange}
+                value={signup.password || ''}
+                onChange={handleSignupChange}
             />
             <button>Login</button>
             </FormGroup>
@@ -99,5 +101,5 @@ const mapStateToProps = (state) => {
     }
   }
   
-  export default connect(mapStateToProps, {login})(Signup)
+  export default connect(mapStateToProps, {signup})(Signup)
   
