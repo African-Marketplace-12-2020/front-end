@@ -5,7 +5,6 @@
     Navbar.js
     SavedItem.js
 
-    /components/forms/Signup.js
     /components/forms/AddProduct.js
 */
 import React from 'react';
@@ -15,6 +14,7 @@ import styled from "styled-components";
 const Container = styled.nav`
   height: 10vh;
   width: 100%;
+  margin: 0.5rem;
   background: #fff;
   @media screen and (max-width: 768px) {
     position: relative;

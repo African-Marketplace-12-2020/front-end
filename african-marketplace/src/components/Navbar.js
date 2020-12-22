@@ -78,6 +78,9 @@ export default function Navbar(props) {
         <Line />
       </Hamburguer>
       <NavLinks display={display}>
+      <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
+          <NavLink to="/signup">Signup</NavLink>
+        </li>
         <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
           <NavLink to="/login">Login</NavLink>
         </li>

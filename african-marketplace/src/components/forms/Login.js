@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { withRouter, Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
 import { login } from '../../actions/marketActions';
 import styled from "styled-components";
