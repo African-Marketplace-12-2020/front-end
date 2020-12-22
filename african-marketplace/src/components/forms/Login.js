@@ -49,7 +49,7 @@ const Login = (props) => {
         setCredentials({
             credentials: {
                 username: '',
-
+                password: ''
             }
         })
         props.history.push('/product-list')
