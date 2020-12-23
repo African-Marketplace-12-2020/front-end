@@ -9,10 +9,13 @@ import {
 } from '../actions/marketActions';
 
 const initialState = {
-    data: ''
+    data: [],
+    isFetching: false,
+    error: ''
 }
 
 export default function (state = initialState, action) {
+    console.log(state)
     switch(action.type) {
     case ADD_USER: 
         return {

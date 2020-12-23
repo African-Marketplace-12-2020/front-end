@@ -21,18 +21,17 @@ export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 
 
 export const fetchData = () => dispatch => {
-    /*
     dispatch({ type: FETCH_START });
     setTimeout(() => {
         axios
-        .get('api url here...')
+        .get('https://reqres.in/api/unknown')
         .then(res => {
-            const data = res.data.objects
+            const data = res.data
+            console.log(data)
           dispatch({ type: FETCH_SUCCESS, payload: data })
         })
         .catch( err => dispatch({ type: FETCH_FAIL, payload: err }))
     }, 3000);
-    */
   };
 
   export const login = (credentials) => (dispatch) => {
