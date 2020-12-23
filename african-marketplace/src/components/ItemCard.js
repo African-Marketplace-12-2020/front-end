@@ -38,13 +38,14 @@ const Button = styled.button`
 `;
 
 const ItemCard = (props) => {
+  console.log(props)
   const handleClick = (e) => {
     e.preventDefault();
     alert("Item added!");
   };
   return (
     <Container>
-      <Title>{props.name}</Title>
+      <Title>{props.data.name}</Title>
       <div
         style={{
           display: "flex",
@@ -52,10 +53,8 @@ const ItemCard = (props) => {
           textAlign: "left",
           marginLeft: "5px",
         }}>
-        <Text>Price: {props.price}</Text>
-        <Text>Description: {props.description}</Text>
-        <Text>Location: {props.location}</Text>
-        <Text>Contact: {props.contact}</Text>
+        <Text>Value: {props.data.pantone_value}</Text>
+        <Text>Year: {props.data.year}</Text>
       </div>
 
       <Button onClick={handleClick}>Add Item</Button>
