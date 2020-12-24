@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 //import { fetchData } from './actions/marketActions';
 import Login from './components/forms/Login';
 import Signup from './components/forms/Signup';
+import AddProduct from './components/forms/AddProduct';
 import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import PrivateRoute from './components/PrivateRoute';
@@ -31,6 +32,7 @@ function App(props) {
             <PrivateRoute exact path="/product-list" component={ProductList} />
             <Route path="/login" component={props => <Login {...props} />} />
             <Route path="/signup" component={props => <Signup {...props} />} />
+            <Route path="/add-product" component={props => <AddProduct {...props} />} />
           </Switch>
         </Router>
     </div>
