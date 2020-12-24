@@ -90,6 +90,9 @@ export default function Navbar(props) {
         <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
             <NavLink to="/product-list">Product List</NavLink>
         </li>
+		<li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
+            <NavLink to="/add-product">Add Product</NavLink>
+        </li>
       </NavLinks>
     </Container>
   );

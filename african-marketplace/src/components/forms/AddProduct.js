@@ -32,7 +32,6 @@ export const Input = styled.input`
 `;
 
 const AddProduct = (props) => {
-    console.log(props)
     /**
      * actual product values: 
      * name, description, location, price, plus an email
@@ -68,29 +67,29 @@ const AddProduct = (props) => {
     return (
         <div>
             <FormGroup onSubmit={handleSubmit}>
-            <h1>Signup component</h1>
+            <h1>Add a Product</h1>
             <Input id="label" 
-                placeholder='Username' 
+                placeholder='Name' 
                 type="text"
-                name="username"
-                value={signup.username || ''}
+                name="name"
+                value={addedProduct.name || ''}
                 onChange={handleProductChange}
             />
             <Input  
-                placeholder='firstName' 
+                placeholder='Pantone Value' 
                 type="text"
-                name="firstname"
-                value={signup.firstname || ''}
+                name="pantone_value"
+                value={addedProduct.pantone_value || ''}
                 onChange={handleProductChange}
             />
             <Input 
-                placeholder='Password' 
-                type="password"
-                name="password"
-                value={signup.password || ''}
+                placeholder='Year' 
+                type="text"
+                name="year"
+                value={addedProduct.year || ''}
                 onChange={handleProductChange}
             />
-            <button>Login</button>
+            <button>Submit</button>
             </FormGroup>
         </div>
     )
