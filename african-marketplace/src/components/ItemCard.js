@@ -38,22 +38,23 @@ const Button = styled.button`
 `;
 
 const ItemCard = (props) => {
+  console.log(props);
   const handleClick = (e) => {
     e.preventDefault();
-    alert("Item added should add the selected item to the Buyer's UIå!");
+    alert("Item added!");
   };
   return (
     <Container>
-      <Title>{props.data.name}</Title>
+      <Title>{props.name}</Title>
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           textAlign: "left",
-          margin: "0px 15px"
+          margin: "0px 15px",
         }}>
-        <Text>Value: {props.data.pantone_value}</Text>
-        <Text>Year: {props.data.year}</Text>
+        <Text>Value: {props.pantone_value}</Text>
+        <Text>Year: {props.year}</Text>
       </div>
 
       <Button onClick={handleClick}>Add Item</Button>
