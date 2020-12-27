@@ -40,7 +40,7 @@ const Button = styled.button`
 const ItemCard = (props) => {
   const handleClick = (e) => {
     e.preventDefault();
-    alert("Item added!");
+    alert("Item added should add the selected item to the Buyer's UIå!");
   };
   return (
     <Container>
