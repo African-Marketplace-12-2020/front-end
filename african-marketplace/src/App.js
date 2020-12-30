@@ -8,12 +8,11 @@ import {
 import { connect } from 'react-redux';
 import Login from './components/forms/Login';
 import Signup from './components/forms/Signup';
-import AddProduct from './components/forms/AddProduct';
+//import AddProduct from './components/forms/AddProduct';
 import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import PrivateRoute from './components/PrivateRoute';
 import Market from './components/Market';
-import Navbar from './components/Navbar';
 import './App.css';
 
 function App(props) {

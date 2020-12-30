@@ -38,14 +38,14 @@ const Button = styled.button`
 `;
 
 const ItemCard = (props) => {
-  console.log(props);
+  console.log(props.data);
   const handleClick = (e) => {
     e.preventDefault();
     alert("Item added!");
   };
   return (
     <Container>
-      <Title>{props.name}</Title>
+      <Title>{props.data.name}</Title>
       <div
         style={{
           display: "flex",
@@ -53,8 +53,8 @@ const ItemCard = (props) => {
           textAlign: "left",
           margin: "0px 15px",
         }}>
-        <Text>Value: {props.pantone_value}</Text>
-        <Text>Year: {props.year}</Text>
+        <Text>Value: {props.data.pantone_value}</Text>
+        <Text>Year: {props.data.year}</Text>
       </div>
 
       <Button onClick={handleClick}>Add Item</Button>

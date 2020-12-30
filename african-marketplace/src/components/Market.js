@@ -17,6 +17,7 @@ const Market = () => {
   useEffect(() => {
     setDisplay(list.filter((item) => item.name === search.input));
   }, [search]);
+  
   return (
     <div>
       <input
