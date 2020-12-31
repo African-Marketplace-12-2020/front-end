@@ -38,7 +38,7 @@ const Button = styled.button`
 `;
 
 const ItemCard = (props) => {
-  console.log(props.data);
+  //console.log(props.data);
   const handleClick = (e) => {
     e.preventDefault();
     alert("Item added!");
