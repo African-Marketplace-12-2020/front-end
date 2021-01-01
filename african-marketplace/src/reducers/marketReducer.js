@@ -2,6 +2,8 @@ import {
     FETCH_START, 
     FETCH_SUCCESS, 
     FETCH_FAIL, 
+    ADD_PRODUCT, 
+    UPDATE_PRODUCT,
     ADD_USER,
     UPDATE_USER,
     SET_MESSAGE,
@@ -15,12 +17,18 @@ const initialState = {
 }
 
 export default function (state = initialState, action) {
-    console.log(action.type)
+    //console.log(action.payload)
     switch(action.type) {
     case ADD_USER: 
         return {
             ...state, 
-            profile: action.payload.user, 
+            data: action.payload, 
+            formSubmitted: false
+        }
+    case ADD_PRODUCT: 
+        return {
+            ...state, 
+            data: action.payload, 
             formSubmitted: false
         }
     case FETCH_START: 

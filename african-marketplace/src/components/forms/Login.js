@@ -84,11 +84,11 @@ const Login = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
+    console.log(state.authReducer.isLoggedIn)
     return {
-        isLoggedIn: state.isLoggedIn,
-        error: state.error,
-        token: state.token
+        isLoggedIn: state.authReducer.isLoggedIn,
+        error: state.authReducer.error,
+        token: state.authReducer.token
     }
   }
   

@@ -22,7 +22,7 @@ const FlexContainer = styled.div`
 `;
 
 const ProductList = (props) => {
-    console.log(props.productsAsProps)
+    //console.log(props.productsAsProps)
     useEffect(() => {
         props.fetchData();
       }, [])
@@ -45,8 +45,8 @@ const mapStateToProps = (state) => {
     //console.log(state.marketReducer.data.data)
     return {
         productsAsProps: state.marketReducer.data.data,
-        isFetching: state.isFetching,
-        error: state.error
+        isFetching: state.marketReducer.isFetching,
+        error: state.marketReducer.error
     }
   }
   

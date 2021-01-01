@@ -10,6 +10,9 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 
+export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+
 export const ADD_USER = 'ADD_USER';
 export const UPDATE_USER = 'UPDATE_USER';
 
@@ -27,7 +30,6 @@ export const fetchData = () => dispatch => {
         .get('https://reqres.in/api/unknown')
         .then(res => {
             const data = res.data
-            console.log(data)
           dispatch({ type: FETCH_SUCCESS, payload: data })
         })
         .catch( err => dispatch({ type: FETCH_FAIL, payload: err }))
@@ -41,7 +43,6 @@ export const fetchData = () => dispatch => {
     .then(res => {
         const token = res.data.token;
         const data = res.data;
-        console.log(res)
         localStorage.setItem('token', token)
         dispatch({ type: LOGIN_SUCCESS, payload: data })
     })
@@ -55,9 +56,22 @@ export const fetchData = () => dispatch => {
     .then(res => {
         const token = res.data.token;
         const data = res.data;
-        console.log(res)
         localStorage.setItem('token', token)
         dispatch({ type: REGISTER_SUCCESS, payload: data })
+    })
+    .catch( err => dispatch({ type: REGISTER_FAIL, payload: err }))
+  }
+
+  export const addProduct = (addProduct) => (dispatch) => {
+    let newProduct = addProduct;
+
+    return axios.post('https://reqres.in/api/unknown', newProduct)
+    .then(res => {
+        const token = res.data.token;
+        const data = res.data;
+        console.log(res)
+        localStorage.setItem('token', token)
+        dispatch({ type: ADD_PRODUCT, payload: data })
     })
     .catch( err => dispatch({ type: REGISTER_FAIL, payload: err }))
   }

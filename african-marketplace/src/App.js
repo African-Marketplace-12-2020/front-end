@@ -6,23 +6,16 @@ import {
 	NavLink,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-//import { fetchData } from './actions/marketActions';
 import Login from './components/forms/Login';
 import Signup from './components/forms/Signup';
+//import AddProduct from './components/forms/AddProduct';
 import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import PrivateRoute from './components/PrivateRoute';
 import Market from './components/Market';
-import NavBar from './components/Navbar';
 import './App.css';
 
 function App(props) {
-	/*
-  useEffect(() => {
-    props.fetchData();
-  }, [])
-  */
-
 	return (
 		<div className='App'>
 			<h1 className='AppTitle'>African Marketplace</h1>
@@ -48,6 +41,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, {
-	/*fetchData */
-})(App);
+export default connect(mapStateToProps, {})(App);
