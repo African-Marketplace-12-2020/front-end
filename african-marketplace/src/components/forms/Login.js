@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { login } from '../../actions/marketActions';
 import styled from "styled-components";
 
@@ -27,12 +28,12 @@ export const Input = styled.input`
 	background: papayawhip;
 	border: none;
 	border-radius: 3px;
-	width: 100%;
+	width: 90%;
 	margin-bottom: 0.5em;
 `;
 
 const Login = (props) => {
-    console.log(props.isLoggedIn)
+    console.log(props)
     const [credentials, setCredentials] = useState({
             username: '',
             password: ''
@@ -78,17 +79,22 @@ const Login = (props) => {
                 onChange={handleChange}
             />
             <button>Login</button>
+            <div>
+                <h2>Create account</h2>
+                <button><NavLink to="/signup">Signup</NavLink></button>
+            </div>
+            
             </FormGroup>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.authReducer.isLoggedIn)
+    console.log(state)
     return {
-        isLoggedIn: state.authReducer.isLoggedIn,
-        error: state.authReducer.error,
-        token: state.authReducer.token
+        isLoggedIn: state.isLoggedIn,
+        error: state.error,
+        token: state.token
     }
   }
   
