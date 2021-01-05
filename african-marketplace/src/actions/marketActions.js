@@ -1,5 +1,6 @@
 import axios from 'axios';
 //import axiosWithAuth from '../utils/axiosWithAuth';
+//replace axios with axiosWithAuth() for the addProduct, updateProduct, and deleteProduct methods
 
 export const FETCH_START = 'FFETCH_TART';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
@@ -12,6 +13,7 @@ export const LOGOUT = 'LOGOUT';
 
 export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 
 export const ADD_USER = 'ADD_USER';
 export const UPDATE_USER = 'UPDATE_USER';
@@ -43,6 +45,7 @@ export const fetchData = () => dispatch => {
     .then(res => {
         const token = res.data.token;
         const data = res.data;
+        console.log(res)
         localStorage.setItem('token', token)
         dispatch({ type: LOGIN_SUCCESS, payload: data })
     })
@@ -56,6 +59,7 @@ export const fetchData = () => dispatch => {
     .then(res => {
         const token = res.data.token;
         const data = res.data;
+        console.log(res)
         localStorage.setItem('token', token)
         dispatch({ type: REGISTER_SUCCESS, payload: data })
     })
@@ -64,14 +68,35 @@ export const fetchData = () => dispatch => {
 
   export const addProduct = (addProduct) => (dispatch) => {
     let newProduct = addProduct;
-
+    console.log(newProduct)
     return axios.post('https://reqres.in/api/unknown', newProduct)
     .then(res => {
         const token = res.data.token;
         const data = res.data;
-        console.log(res)
+        console.log(data)
         localStorage.setItem('token', token)
         dispatch({ type: ADD_PRODUCT, payload: data })
     })
-    .catch( err => dispatch({ type: REGISTER_FAIL, payload: err }))
+    .catch( err => dispatch({ type: FETCH_FAIL, payload: err }))
+  }
+
+  export const updateProduct = (addProduct) => (dispatch) => {
+    let newProduct = addProduct;
+    axios.put('https://reqres.in/api/unknown', newProduct)
+    .then(res => {
+      const token = res.data.token;
+      const data = res.data;
+      console.log(data)
+      localStorage.setItem('token', token)
+      dispatch({ type: UPDATE_PRODUCT, payload: data })
+    })
+    .catch( err => dispatch({ type: FETCH_FAIL, payload: err })) 
+  }
+
+  export const deleteProduct = (id) => (dispatch) => {
+    axios.delete(`https://reqres.in/api/unknown${id}`)
+    .then(res => {
+      dispatch({ type: DELETE_PRODUCT, payload: id })
+    })
+    .catch( err => dispatch({ type: FETCH_FAIL, payload: err })) 
   }
