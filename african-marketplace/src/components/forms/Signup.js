@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../actions/marketActions';
+import { signup } from '../../actions/marketActions';
 import styled from "styled-components";
 
 export const FormGroup = styled.form`
@@ -27,33 +27,35 @@ export const Input = styled.input`
 	background: papayawhip;
 	border: none;
 	border-radius: 3px;
-	width: 100%;
+	width: 90%;
 	margin-bottom: 0.5em;
 `;
 
-const Login = (props) => {
-    console.log(props.isLoggedIn)
-    const [credentials, setCredentials] = useState({
-            username: '',
-            password: ''
-        })
+const Signup = (props) => {
+    console.log(props)
+    const [signup, setSignup] = useState({
+        firstName: '',
+        username: '',
+        password: '',
+    })
 
-    const handleChange = e => {
+
+    const handleSignupChange = e => {
         e.preventDefault();
-        setCredentials({
-            ...credentials,
+        setSignup({
+            ...signup,
             [e.target.name]: e.target.value
         })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.login(credentials);
-        
-        setCredentials({
-            credentials: {
+        props.signup(signup);
+        setSignup({
+            signup: {
+                firstName: '',
                 username: '',
-                password: ''
+                password: '',
             }
         })
         props.history.push('/product-list')
@@ -62,20 +64,27 @@ const Login = (props) => {
     return (
         <div>
             <FormGroup onSubmit={handleSubmit}>
-            <h1>Login component</h1>
+            <h1>Signup component</h1>
             <Input id="label" 
                 placeholder='Username' 
                 type="text"
                 name="username"
-                value={credentials.username || ''}
-                onChange={handleChange}
+                value={signup.username || ''}
+                onChange={handleSignupChange}
+            />
+            <Input  
+                placeholder='firstName' 
+                type="text"
+                name="firstname"
+                value={signup.firstname || ''}
+                onChange={handleSignupChange}
             />
             <Input 
                 placeholder='Password' 
                 type="password"
                 name="password"
-                value={credentials.password || ''}
-                onChange={handleChange}
+                value={signup.password || ''}
+                onChange={handleSignupChange}
             />
             <button>Login</button>
             </FormGroup>
@@ -84,13 +93,13 @@ const Login = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.authReducer.isLoggedIn)
+    console.log(state)
     return {
-        isLoggedIn: state.authReducer.isLoggedIn,
-        error: state.authReducer.error,
-        token: state.authReducer.token
+        isLoggedIn: state.isLoggedIn,
+        error: state.error,
+        token: state.token
     }
   }
   
-  export default connect(mapStateToProps, {login})(Login)
+  export default connect(mapStateToProps, {signup})(Signup)
   

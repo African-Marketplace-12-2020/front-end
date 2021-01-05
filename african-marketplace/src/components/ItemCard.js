@@ -5,12 +5,12 @@ const Container = styled.div`
   border: black solid 2px;
   background-color: #ffefd5;
   width: 400px;
-  height: 400px;
+  height: 300px;
   border-radius: 10px;
   box-shadow: 2px 2px #77925f;
   border: #77925f solid 1px;
-  margin: 5px;
-  padding: 0;
+  margin: 5px 5px;
+  padding: 5px;
 `;
 
 const Title = styled.h1`
@@ -38,24 +38,23 @@ const Button = styled.button`
 `;
 
 const ItemCard = (props) => {
+  //console.log(props.data);
   const handleClick = (e) => {
     e.preventDefault();
     alert("Item added!");
   };
   return (
     <Container>
-      <Title>{props.name}</Title>
+      <Title>{props.data.name}</Title>
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           textAlign: "left",
-          marginLeft: "5px",
+          margin: "0px 15px",
         }}>
-        <Text>Price: {props.price}</Text>
-        <Text>Description: {props.description}</Text>
-        <Text>Location: {props.location}</Text>
-        <Text>Contact: {props.contact}</Text>
+        <Text>Value: {props.data.pantone_value}</Text>
+        <Text>Year: {props.data.year}</Text>
       </div>
 
       <Button onClick={handleClick}>Add Item</Button>

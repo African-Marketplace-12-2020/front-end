@@ -2,6 +2,9 @@ import {
     FETCH_START, 
     FETCH_SUCCESS, 
     FETCH_FAIL, 
+    ADD_PRODUCT, 
+    UPDATE_PRODUCT,
+    DELETE_PRODUCT,
     ADD_USER,
     UPDATE_USER,
     SET_MESSAGE,
@@ -9,10 +12,11 @@ import {
 } from '../actions/marketActions';
 
 const initialState = {
-    data: ''
+    data: []
 }
 
 export default function (state = initialState, action) {
+    console.log(state);
     switch(action.type) {
     case ADD_USER: 
         return {
@@ -20,6 +24,23 @@ export default function (state = initialState, action) {
             profile: action.payload.user, 
             formSubmitted: false
         }
+    case ADD_PRODUCT: 
+        return {
+            ...state, 
+            data: action.payload, 
+            formSubmitted: false
+        }
+    case UPDATE_PRODUCT: 
+        return {
+            ...state, 
+            data: action.payload, 
+            formSubmitted: false
+        }
+    case DELETE_PRODUCT: 
+            return {
+                ...state, 
+                data: state.data.data.filter(item => item.id !== action.payload)
+            }
     case FETCH_START: 
         return {
             ...state,

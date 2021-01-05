@@ -1,5 +1,6 @@
 import axios from 'axios';
 //import axiosWithAuth from '../utils/axiosWithAuth';
+//replace axios with axiosWithAuth() for the addProduct, updateProduct, and deleteProduct methods
 
 export const FETCH_START = 'FFETCH_TART';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
@@ -9,6 +10,10 @@ export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
+
+export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 
 export const ADD_USER = 'ADD_USER';
 export const UPDATE_USER = 'UPDATE_USER';
@@ -21,18 +26,16 @@ export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 
 
 export const fetchData = () => dispatch => {
-    /*
     dispatch({ type: FETCH_START });
     setTimeout(() => {
         axios
-        .get('api url here...')
+        .get('https://reqres.in/api/unknown')
         .then(res => {
-            const data = res.data.objects
+            const data = res.data
           dispatch({ type: FETCH_SUCCESS, payload: data })
         })
         .catch( err => dispatch({ type: FETCH_FAIL, payload: err }))
     }, 3000);
-    */
   };
 
   export const login = (credentials) => (dispatch) => {
@@ -61,4 +64,39 @@ export const fetchData = () => dispatch => {
         dispatch({ type: REGISTER_SUCCESS, payload: data })
     })
     .catch( err => dispatch({ type: REGISTER_FAIL, payload: err }))
+  }
+
+  export const addProduct = (addProduct) => (dispatch) => {
+    let newProduct = addProduct;
+    console.log(newProduct)
+    return axios.post('https://reqres.in/api/unknown', newProduct)
+    .then(res => {
+        const token = res.data.token;
+        const data = res.data;
+        console.log(data)
+        localStorage.setItem('token', token)
+        dispatch({ type: ADD_PRODUCT, payload: data })
+    })
+    .catch( err => dispatch({ type: FETCH_FAIL, payload: err }))
+  }
+
+  export const updateProduct = (addProduct) => (dispatch) => {
+    let newProduct = addProduct;
+    axios.put('https://reqres.in/api/unknown', newProduct)
+    .then(res => {
+      const token = res.data.token;
+      const data = res.data;
+      console.log(data)
+      localStorage.setItem('token', token)
+      dispatch({ type: UPDATE_PRODUCT, payload: data })
+    })
+    .catch( err => dispatch({ type: FETCH_FAIL, payload: err })) 
+  }
+
+  export const deleteProduct = (id) => (dispatch) => {
+    axios.delete(`https://reqres.in/api/unknown${id}`)
+    .then(res => {
+      dispatch({ type: DELETE_PRODUCT, payload: id })
+    })
+    .catch( err => dispatch({ type: FETCH_FAIL, payload: err })) 
   }

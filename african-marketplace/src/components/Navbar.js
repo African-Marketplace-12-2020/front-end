@@ -55,42 +55,56 @@ const NavLinks = styled.ul`
 `;
 
 export default function Navbar(props) {
-  const [display, setDisplay] = useState(false);
-  const toggleDisplay = () => {
-    if (display) {
-      setDisplay(false);
-    } else {
-      setDisplay(true);
-    }
-  };
+	const [display, setDisplay] = useState(false);
+	const toggleDisplay = () => {
+		if (display) {
+			setDisplay(false);
+		} else {
+			setDisplay(true);
+		}
+	};
 
-  const logout = () => {
-    //localStorage.removeItem('token');
-    //props.history.push('/login')
-    }
+	const logout = () => {
+		//localStorage.removeItem('token');
+		//props.history.push('/login')
+	};
 
-
-  return (
-    <Container>
-      <Hamburguer onClick={() => toggleDisplay()}>
-        <Line />
-        <Line />
-        <Line />
-      </Hamburguer>
-      <NavLinks display={display}>
-      <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
-          <NavLink to="/signup">Signup</NavLink>
-        </li>
-        <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
-          <NavLink to="/login">Login</NavLink>
-        </li>
-        <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
-            <NavLink to="/login" onClick={logout}>Logout</NavLink>
-        </li>
-        <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
-            <NavLink to="/product-list">Product List</NavLink>
-        </li>
-      </NavLinks>
-    </Container>
-  );
+	return (
+		<Container>
+			<Hamburguer onClick={() => toggleDisplay()}>
+				<Line />
+				<Line />
+				<Line />
+			</Hamburguer>
+			<NavLinks>
+				<li
+					style={{ color: 'white', textDecoration: 'none', fontSize: '16px' }}
+				>
+					<NavLink to='/signup'>Signup</NavLink>
+				</li>
+				<li
+					style={{ color: 'white', textDecoration: 'none', fontSize: '16px' }}
+				>
+					<NavLink to='/login'>Login</NavLink>
+				</li>
+				<li
+					style={{ color: 'white', textDecoration: 'none', fontSize: '16px' }}
+				>
+					<NavLink to='/login' onClick={logout}>
+						Logout
+					</NavLink>
+				</li>
+				<li
+					style={{ color: 'white', textDecoration: 'none', fontSize: '16px' }}
+				>
+					<NavLink to='/product-list'>Product List</NavLink>
+				</li>
+				<li
+					style={{ color: 'white', textDecoration: 'none', fontSize: '16px' }}
+				>
+					<NavLink to='/market'>Market</NavLink>
+				</li>
+			</NavLinks>
+		</Container>
+	);
 }
