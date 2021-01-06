@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { connect } from 'react-redux';
+import { updateProduct, deleteProduct } from '../actions/marketActions';
+import EditProduct from './forms/EditProduct';
+
 
 const Container = styled.div`
   border: black solid 2px;
   background-color: #ffefd5;
-  width: 400px;
-  height: 300px;
+  width: 360px;
   border-radius: 10px;
   box-shadow: 2px 2px #77925f;
   border: #77925f solid 1px;
-  margin: 5px 5px;
+  margin: 10px 5px;
   padding: 5px;
 `;
 
@@ -21,29 +24,30 @@ const Title = styled.h1`
 const Text = styled.p`
   color: #77925f;
   font-weight: normal;
+  margin: 10px 0px;
 `;
 
-const Button = styled.button`
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  background: white;
-  border-radius: 3px;
-  color: #77925f;
-  border: #77925f solid 2px;
-  &:hover {
-    color: white;
-    background: #77925f;
-  }
-`;
+const initialItemToEdit = {
+  name: "",
+  pantone_value: "",
+  year: "",
+};
 
 const ItemCard = (props) => {
-  //console.log(props.data);
-  const handleClick = (e) => {
-    e.preventDefault();
-    alert("Item added!");
+
+  const [editing, setEditing] = useState(false);
+  const [itemToEdit, setItemToEdit] = useState(initialItemToEdit);
+
+  const editItem = item => {
+    setEditing(true);
   };
+
+  const cancelEdit = item => {
+    setEditing(false);
+  };
+
   return (
+    <div>
     <Container>
       <Title>{props.data.name}</Title>
       <div
@@ -51,15 +55,36 @@ const ItemCard = (props) => {
           display: "flex",
           flexDirection: "column",
           textAlign: "left",
-          margin: "0px 15px",
+          marginLeft: "5px",
         }}>
         <Text>Value: {props.data.pantone_value}</Text>
         <Text>Year: {props.data.year}</Text>
+        
       </div>
-
-      <Button onClick={handleClick}>Add Item</Button>
+      {!editing && (
+          <div className="button-row">
+              <button onClick={() => editItem(props.data)}>Edit Item</button>
+              
+              <button onClick={() => {props.deleteProduct(props.data.id)}}>Delete</button>
+          </div>
+      )}
+        {editing && (
+            <EditProduct data={props.data} />
+        )}
+        {editing && (
+            <button onClick={() => cancelEdit(props.data)}>Cancel</button>
+        )}
     </Container>
+    </div>
   );
 };
 
-export default ItemCard;
+const mapStateToProps = (state) => {
+  return {
+      productsAsProps: state.marketReducer.data.data,
+      isFetching: state.marketReducer.isFetching,
+      error: state.marketReducer.error
+  }
+}
+
+export default connect(mapStateToProps,{updateProduct, deleteProduct})(ItemCard);
