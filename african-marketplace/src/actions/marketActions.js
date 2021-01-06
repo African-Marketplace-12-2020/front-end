@@ -1,5 +1,5 @@
 import axios from 'axios';
-//import axiosWithAuth from '../utils/axiosWithAuth';
+import axiosWithAuth from '../utils/axiosWithAuth';
 //replace axios with axiosWithAuth() for the addProduct, updateProduct, and deleteProduct methods
 
 export const FETCH_START = 'FFETCH_TART';
@@ -29,7 +29,7 @@ export const fetchData = () => dispatch => {
     dispatch({ type: FETCH_START });
     setTimeout(() => {
         axios
-        .get('https://reqres.in/api/unknown')
+        .get('https://bw-172-african-marketplace.herokuapp.com/items')
         .then(res => {
             const data = res.data
           dispatch({ type: FETCH_SUCCESS, payload: data })
@@ -41,7 +41,7 @@ export const fetchData = () => dispatch => {
   export const login = (credentials) => (dispatch) => {
     let logIn = credentials;
     dispatch({ type: LOGIN_START })
-    return axios.post('https://reqres.in/api/login', logIn)
+    return axios.post('https://bw-172-african-marketplace.herokuapp.com/login', logIn)
     .then(res => {
         const token = res.data.token;
         const data = res.data;
@@ -55,7 +55,7 @@ export const fetchData = () => dispatch => {
   export const signup = (signup) => (dispatch) => {
     let registration = signup;
 
-    return axios.post('https://reqres.in/api/register', registration)
+    return axios.post('https://bw-172-african-marketplace.herokuapp.com/register', registration)
     .then(res => {
         const token = res.data.token;
         const data = res.data;
@@ -69,7 +69,7 @@ export const fetchData = () => dispatch => {
   export const addProduct = (addProduct) => (dispatch) => {
     let newProduct = addProduct;
     console.log(newProduct)
-    return axios.post('https://reqres.in/api/unknown', newProduct)
+    return axiosWithAuth().post('https://bw-172-african-marketplace.herokuapp.com/items', newProduct)
     .then(res => {
         const token = res.data.token;
         const data = res.data;
@@ -80,9 +80,9 @@ export const fetchData = () => dispatch => {
     .catch( err => dispatch({ type: FETCH_FAIL, payload: err }))
   }
 
-  export const updateProduct = (addProduct) => (dispatch) => {
-    let newProduct = addProduct;
-    axios.put('https://reqres.in/api/unknown', newProduct)
+  export const updateProduct = (id) => (dispatch) => {
+    let newProduct = id;
+    axiosWithAuth().put(`https://bw-172-african-marketplace.herokuapp.com/items/${id}`, newProduct)
     .then(res => {
       const token = res.data.token;
       const data = res.data;
@@ -93,8 +93,10 @@ export const fetchData = () => dispatch => {
     .catch( err => dispatch({ type: FETCH_FAIL, payload: err })) 
   }
 
+  
+
   export const deleteProduct = (id) => (dispatch) => {
-    axios.delete(`https://reqres.in/api/unknown${id}`)
+    axiosWithAuth().delete(`https://bw-172-african-marketplace.herokuapp.com/items/${id}`)
     .then(res => {
       dispatch({ type: DELETE_PRODUCT, payload: id })
     })
