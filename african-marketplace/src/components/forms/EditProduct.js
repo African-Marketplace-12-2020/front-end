@@ -45,7 +45,8 @@ const EditProduct = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.updateProduct(setValues(values));
+        console.log(values)
+        props.updateProduct(values);
         setValues({
             name: '',
             pantone_value: '',

@@ -56,8 +56,8 @@ const ItemCard = (props) => {
           textAlign: "left",
           marginLeft: "5px",
         }}>
-        <Text>Value: {props.data.description}</Text>
-        <Text>Year: {props.data.price}</Text>
+        <Text>Description: {props.data.description}</Text>
+        <Text>Price: {props.data.price}</Text>
         
       </div>
       {!editing && (
