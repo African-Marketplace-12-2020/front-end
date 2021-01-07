@@ -31,7 +31,13 @@ export default function (state = initialState, action) {
     case UPDATE_PRODUCT: 
         return {
             ...state, 
-            data: action.payload, 
+            data: state.data.map(item => {
+                if(item.id === action.payload.id) {
+                    return action.payload
+                } else {
+                    return item
+                }
+            }), 
             formSubmitted: false
         }
     case DELETE_PRODUCT: 

@@ -34,11 +34,12 @@ const initialItemToEdit = {
 };
 
 const ItemCard = (props) => {
+  //console.log(props)
   const [editing, setEditing] = useState(false);
   const [itemToEdit, setItemToEdit] = useState(initialItemToEdit);
 
   const editItem = item => {
-    setEditing(true);
+    setEditing(!editing);
   };
 
   const cancelEdit = item => {
@@ -57,18 +58,18 @@ const ItemCard = (props) => {
           marginLeft: "5px",
         }}>
         <Text>Description: {props.data.description}</Text>
-        <Text>Price: {props.data.price}</Text>
+        <Text>Price: ${props.data.price}</Text>
         
       </div>
       {!editing && (
           <div className="button-row">
-              <button onClick={() => editItem(props.data)}>Edit Item</button>
+              <button onClick={() => editItem()}>Edit Item</button>
               
               <button onClick={() => {props.deleteProduct(props.data.id)}}>Delete</button>
           </div>
       )}
         {editing && (
-            <EditProduct data={props.data} />
+            <EditProduct data={props.data} editItem={editItem} editing={editing} />
         )}
         {editing && (
             <button onClick={() => cancelEdit(props.data)}>Cancel</button>

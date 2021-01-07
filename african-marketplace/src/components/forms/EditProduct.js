@@ -45,13 +45,14 @@ const EditProduct = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(values)
-        props.updateProduct(values);
+        //console.log(props.data.id)
+        props.updateProduct({...values, id: props.data.id});
         setValues({
             name: '',
-            pantone_value: '',
-            year: ''
+            description: '',
+            price: ''
         })
+        props.editItem(!props.editing)
     }
 
     return (
