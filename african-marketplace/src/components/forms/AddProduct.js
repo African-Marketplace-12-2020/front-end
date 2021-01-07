@@ -38,9 +38,8 @@ const AddProduct = (props) => {
      */
     const [addedProduct, setAddedProduct] = useState({
         name: '',
-        pantone_value: '',
-        year: ''
-
+        description: '',
+        price: ''
     })
 
     const handleProductChange = e => {
@@ -57,8 +56,8 @@ const AddProduct = (props) => {
         setAddedProduct({
             addedProduct: {
                 name: '',
-                pantone_value: '',
-                year: ''
+                description: '',
+                price: ''
             }
         })
         props.history.push('/product-list')
@@ -76,17 +75,17 @@ const AddProduct = (props) => {
                 onChange={handleProductChange}
             />
             <Input  
-                placeholder='Pantone Value' 
+                placeholder='Description' 
                 type="text"
-                name="pantone_value"
-                value={addedProduct.pantone_value || ''}
+                name="description"
+                value={addedProduct.description || ''}
                 onChange={handleProductChange}
             />
             <Input 
-                placeholder='Year' 
+                placeholder='Price' 
                 type="text"
-                name="year"
-                value={addedProduct.year || ''}
+                name="price"
+                value={addedProduct.price || ''}
                 onChange={handleProductChange}
             />
             <button>Submit</button>

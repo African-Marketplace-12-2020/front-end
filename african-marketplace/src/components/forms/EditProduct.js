@@ -64,17 +64,17 @@ const EditProduct = (props) => {
                 onChange={handleChanges}
             />
             <Input  
-                placeholder='Pantone Value' 
+                placeholder='Description' 
                 type="text"
-                name="pantone_value"
-                value={values.pantone_value || ''}
+                name="description"
+                value={values.description || ''}
                 onChange={handleChanges}
             />
             <Input 
-                placeholder='Year' 
+                placeholder='Price' 
                 type="text"
-                name="year"
-                value={values.year || ''}
+                name="price"
+                value={values.price || ''}
                 onChange={handleChanges}
             />
             <button>Submit</button>

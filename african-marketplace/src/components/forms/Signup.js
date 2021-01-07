@@ -34,7 +34,6 @@ export const Input = styled.input`
 const Signup = (props) => {
     console.log(props)
     const [signup, setSignup] = useState({
-        firstName: '',
         username: '',
         password: '',
     })
@@ -53,7 +52,6 @@ const Signup = (props) => {
         props.signup(signup);
         setSignup({
             signup: {
-                firstName: '',
                 username: '',
                 password: '',
             }
@@ -70,13 +68,6 @@ const Signup = (props) => {
                 type="text"
                 name="username"
                 value={signup.username || ''}
-                onChange={handleSignupChange}
-            />
-            <Input  
-                placeholder='firstName' 
-                type="text"
-                name="firstname"
-                value={signup.firstname || ''}
                 onChange={handleSignupChange}
             />
             <Input 

@@ -33,11 +33,7 @@ export const Input = styled.input`
 `;
 
 const Login = (props) => {
-    console.log(props)
-    const [credentials, setCredentials] = useState({
-            username: '',
-            password: ''
-        })
+    const [credentials, setCredentials] = useState({})
 
     const handleChange = e => {
         e.preventDefault();
@@ -90,7 +86,6 @@ const Login = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         isLoggedIn: state.isLoggedIn,
         error: state.error,
