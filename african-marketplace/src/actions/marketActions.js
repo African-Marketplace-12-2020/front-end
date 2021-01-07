@@ -28,7 +28,7 @@ export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 export const fetchData = () => dispatch => {
     dispatch({ type: FETCH_START });
     setTimeout(() => {
-        axios
+      axiosWithAuth()
         .get('https://bw-172-african-marketplace.herokuapp.com/items')
         .then(res => {
             const data = res.data
@@ -92,8 +92,6 @@ export const fetchData = () => dispatch => {
     })
     .catch( err => dispatch({ type: FETCH_FAIL, payload: err })) 
   }
-
-  
 
   export const deleteProduct = (id) => (dispatch) => {
     axiosWithAuth().delete(`https://bw-172-african-marketplace.herokuapp.com/items/${id}`)

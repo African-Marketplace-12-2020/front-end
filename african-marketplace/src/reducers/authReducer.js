@@ -22,6 +22,9 @@ const initialState = {
 }
 
 export default function (state = initialState, action) {
+    console.log(action.type)
+    console.log("****************")
+    console.log(action.payload)
     switch(action.type) {
     case LOGIN_START: 
         return {
@@ -38,7 +41,6 @@ export default function (state = initialState, action) {
     case LOGIN_FAIL:
             return {
                 ...state,
-                error: action.payload,
                 isLoggedIn: false, 
                 error: action.payload
             }
