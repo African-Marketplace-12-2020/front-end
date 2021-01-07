@@ -34,7 +34,7 @@ const initialItemToEdit = {
 };
 
 const ItemCard = (props) => {
-
+  console.log(props)
   const [editing, setEditing] = useState(false);
   const [itemToEdit, setItemToEdit] = useState(initialItemToEdit);
 
@@ -57,8 +57,8 @@ const ItemCard = (props) => {
           textAlign: "left",
           marginLeft: "5px",
         }}>
-        <Text>Value: {props.data.pantone_value}</Text>
-        <Text>Year: {props.data.year}</Text>
+        <Text>Value: {props.data.description}</Text>
+        <Text>Year: {props.data.price}</Text>
         
       </div>
       {!editing && (
