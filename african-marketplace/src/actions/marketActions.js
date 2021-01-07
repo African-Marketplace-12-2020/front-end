@@ -96,6 +96,8 @@ export const fetchData = () => dispatch => {
   export const deleteProduct = (id) => (dispatch) => {
     axiosWithAuth().delete(`https://bw-172-african-marketplace.herokuapp.com/items/${id}`)
     .then(res => {
+      console.log(res)
+      console.log(id)
       dispatch({ type: DELETE_PRODUCT, payload: id })
     })
     .catch( err => dispatch({ type: FETCH_FAIL, payload: err })) 

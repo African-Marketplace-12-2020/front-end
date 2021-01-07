@@ -34,7 +34,6 @@ const initialItemToEdit = {
 };
 
 const ItemCard = (props) => {
-  console.log(props)
   const [editing, setEditing] = useState(false);
   const [itemToEdit, setItemToEdit] = useState(initialItemToEdit);
 

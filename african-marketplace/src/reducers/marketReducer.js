@@ -16,6 +16,7 @@ const initialState = {
 }
 
 export default function (state = initialState, action) {
+    console.log(action.type)
     switch(action.type) {
     case ADD_USER: 
         return {

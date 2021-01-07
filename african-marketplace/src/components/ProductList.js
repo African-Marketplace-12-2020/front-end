@@ -26,7 +26,6 @@ const FlexContainer = styled.div`
 `;
 
 const ProductList = (props) => {
-    console.log(props)
     const [editing, setEditing] = useState();
     useEffect(() => {
         props.fetchData();
@@ -55,7 +54,7 @@ const ProductList = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.marketReducer.data)
+    //console.log(state.marketReducer.data)
     return {
         productsAsProps: state.marketReducer.data,
         isFetching: state.marketReducer.isFetching,
