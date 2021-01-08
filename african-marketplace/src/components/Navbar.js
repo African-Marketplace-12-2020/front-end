@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.nav`
@@ -54,47 +54,65 @@ const NavLinks = styled.ul`
 	}
 `;
 
-export default function Navbar(props) {
+export default function Navbar() {
 	//console.log(props)
-  const [display, setDisplay] = useState(false);
-  const toggleDisplay = () => {
-    if (display) {
-      setDisplay(false);
-    } else {
-      setDisplay(true);
-    }
-  };
+	const { push } = useHistory();
+	const [display, setDisplay] = useState(false);
+	const toggleDisplay = () => {
+		if (display) {
+			setDisplay(false);
+		} else {
+			setDisplay(true);
+		}
+	};
 
-  const logout = () => {
-    //localStorage.removeItem('token');
-    //props.history.push('/login')
-    }
+	const logout = () => {
+		localStorage.removeItem('token');
+		push('/');
+	};
 
-
-  return (
-    <Container>
-      <Hamburguer onClick={() => toggleDisplay()}>
-        <Line />
-        <Line />
-        <Line />
-      </Hamburguer>
-      <NavLinks>
-        <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
-          <NavLink to="/login">Login</NavLink>
-        </li>
-        <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
-            <NavLink to="/login" onClick={logout}>Logout</NavLink>
-        </li>
-        <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
-            <NavLink to="/product-list">Product List</NavLink>
-        </li>
-        <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
-            <NavLink to="/categories-page">Categories</NavLink>
-        </li>
-        <li style={{ color: 'white', textDecoration: 'none', fontSize: '16px' }}>
-			<NavLink to='/market'>Market</NavLink>
-		</li>
-      </NavLinks>
-    </Container>
-  );
+	return (
+		<Container>
+			<Hamburguer onClick={() => toggleDisplay()}>
+				<Line />
+				<Line />
+				<Line />
+			</Hamburguer>
+			<NavLinks>
+				{/* <li
+					style={{ color: 'white', textDecoration: 'none', fontSize: '16px' }}
+				>
+					<NavLink to='/login'>Login</NavLink>
+				</li> */}
+				{localStorage.getItem('token') ? (
+					<li
+						style={{ color: 'white', textDecoration: 'none', fontSize: '16px' }}
+					>
+						<NavLink to='/login' onClick={logout}>
+							Logout
+						</NavLink>
+					</li>
+				) : null}
+				{localStorage.getItem('token') ? (
+					<li
+						style={{ color: 'white', textDecoration: 'none', fontSize: '16px' }}
+					>
+						<NavLink to='/product-list'>Product List</NavLink>
+					</li>
+				) : null}
+				{localStorage.getItem('token') ? (
+					<li
+						style={{ color: 'white', textDecoration: 'none', fontSize: '16px' }}
+					>
+						<NavLink to='/categories-page'>Categories</NavLink>
+					</li>
+				) : null}
+				{/* <li
+					style={{ color: 'white', textDecoration: 'none', fontSize: '16px' }}
+				>
+					<NavLink to='/market'>Market</NavLink>
+				</li> */}
+			</NavLinks>
+		</Container>
+	);
 }
