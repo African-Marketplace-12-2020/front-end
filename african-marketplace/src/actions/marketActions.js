@@ -75,7 +75,7 @@ export const fetchData = () => dispatch => {
         const data = res.data;
         console.log(data)
         localStorage.setItem('token', token)
-        dispatch({ type: ADD_PRODUCT, payload: data })
+        dispatch({ type: ADD_PRODUCT, payload: res.data })
     })
     .catch( err => dispatch({ type: FETCH_FAIL, payload: err }))
   }
@@ -85,10 +85,8 @@ export const fetchData = () => dispatch => {
     console.log(newProduct)
     axiosWithAuth().put(`https://bw-172-african-marketplace.herokuapp.com/items/${newProduct.id}`, newProduct)
     .then(res => {
-      //const token = res.data.token;
       const data = res.data;
       console.log(res)
-      //localStorage.setItem('token', token)
       dispatch({ type: UPDATE_PRODUCT, payload: res.data.updatedItem })
     })
     .catch( err => dispatch({ type: FETCH_FAIL, payload: err })) 

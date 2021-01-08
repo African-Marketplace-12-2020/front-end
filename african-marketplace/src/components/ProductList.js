@@ -6,9 +6,8 @@ import ProductForm from '../components/forms/ProductForm';
 import CircleLoader from '../CircleLoader';
 import styled from "styled-components";
 
-const Container = styled.nav`
+const Container = styled.div`
   height: 10vh;
-  width: 90%;
   margin: 0.5rem;
   padding: 1rem;
   background: #fff;
@@ -18,11 +17,18 @@ const Container = styled.nav`
 `;
 
 const FlexContainer = styled.div`
-    margin: 0 auto;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+`;
+
+const CircleLoaderContainer = styled.div`
+      margin: 0 auto;
 `;
 
 const ProductList = (props) => {
@@ -33,13 +39,12 @@ const ProductList = (props) => {
 
     return (
         <div>
-        <h1>Product List</h1>
         <Container>
             <ProductForm />
             <FlexContainer>
 
             {props.isFetching ? (
-            <CircleLoader />
+                    <CircleLoader />
                 ) : ( 
                     props.productsAsProps && props.productsAsProps.map(item => 
                         <div key={item.id}>

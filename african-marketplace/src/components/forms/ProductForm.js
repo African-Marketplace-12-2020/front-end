@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const Container = styled.nav`
   height: 10vh;
-  width: 90%;
+  width: 100%;
   margin: 0.5rem;
   padding: 1rem;
   background: #fff;
@@ -14,23 +14,19 @@ const Container = styled.nav`
   }
 `;
 
-const FlexContainer = styled.div`
-    margin: 0 auto;
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-`;
-
 export const FormGroup = styled.form`
 	color: black;
     display: block;
-	width: 50%;
+	  width: 40%;
     margin: 50px auto;
     padding: 2rem;
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    @media screen and (max-width: 768px) {
+      width: 60%;
+      margin: 30px auto;
+    }
 `;
 
 export const Input = styled.input`
@@ -39,7 +35,7 @@ export const Input = styled.input`
 	background: papayawhip;
 	border: none;
 	border-radius: 3px;
-	width: 90%;
+	width: 98%;
     margin-bottom: 0.5em;
 `;
 
@@ -72,7 +68,6 @@ const ProductForm = (props) => {
 
     return (
         <div>
-        <h1>Product Form Component</h1>
           <FormGroup onSubmit={handleSubmit}>
             <h1>Product Form</h1>
             <Input id="label" 
