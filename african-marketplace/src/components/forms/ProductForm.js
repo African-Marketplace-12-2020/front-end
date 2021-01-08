@@ -46,9 +46,9 @@ export const Input = styled.input`
 const ProductForm = (props) => {
     //console.log(props)
     const [values, setValues] = useState({
-      name: "",
-      pantone_value: "",
-      year: "",
+      name: '',
+      description: '',
+      price: ''
     });
 
     useEffect(() => {
@@ -64,9 +64,9 @@ const ProductForm = (props) => {
       console.log(values)
       props.addProduct(values);
       setValues({
-        name: "",
-        pantone_value: "",
-        year: "",
+        name: '',
+        description: '',
+        price: ''
       })
     };
 
@@ -83,17 +83,17 @@ const ProductForm = (props) => {
                 onChange={handleProductChange}
             />
             <Input  
-                placeholder='Pantone Value' 
+                placeholder='Description' 
                 type="text"
-                name="pantone_value"
-                value={values.pantone_value || ''}
+                name="description"
+                value={values.description || ''}
                 onChange={handleProductChange}
             />
             <Input 
-                placeholder='Year' 
+                placeholder='Price' 
                 type="text"
-                name="year"
-                value={values.year || ''}
+                name="price"
+                value={values.price || ''}
                 onChange={handleProductChange}
             />
             <button>Submit</button>

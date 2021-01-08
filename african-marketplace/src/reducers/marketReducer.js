@@ -6,9 +6,7 @@ import {
     UPDATE_PRODUCT,
     DELETE_PRODUCT,
     ADD_USER,
-    UPDATE_USER,
-    SET_MESSAGE,
-    CLEAR_MESSAGE
+    UPDATE_USER
 } from '../actions/marketActions';
 
 const initialState = {
@@ -16,7 +14,7 @@ const initialState = {
 }
 
 export default function (state = initialState, action) {
-    console.log(action.type)
+    console.log(action.payload)
     switch(action.type) {
     case ADD_USER: 
         return {
@@ -33,13 +31,19 @@ export default function (state = initialState, action) {
     case UPDATE_PRODUCT: 
         return {
             ...state, 
-            data: action.payload, 
+            data: state.data.map(item => {
+                if(item.id === action.payload.id) {
+                    return action.payload
+                } else {
+                    return item
+                }
+            }), 
             formSubmitted: false
         }
     case DELETE_PRODUCT: 
             return {
                 ...state, 
-                data: state.data.data.filter(item => item.id !== action.payload)
+                data: state.data.filter(item => item.id !== action.payload)
             }
     case FETCH_START: 
         return {
