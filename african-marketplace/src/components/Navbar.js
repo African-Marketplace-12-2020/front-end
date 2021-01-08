@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { connect } from 'react-redux';
 const Container = styled.nav`
 	height: 10vh;
 	width: 100%;
@@ -54,9 +54,9 @@ const NavLinks = styled.ul`
 	}
 `;
 
-export default function Navbar() {
+const Navbar = (props) => {
 	//console.log(props)
-	const { push } = useHistory();
+	const { push, go } = useHistory();
 	const [display, setDisplay] = useState(false);
 	const toggleDisplay = () => {
 		if (display) {
@@ -68,6 +68,7 @@ export default function Navbar() {
 
 	const logout = () => {
 		localStorage.removeItem('token');
+		go(0);
 		push('/');
 	};
 
@@ -115,4 +116,13 @@ export default function Navbar() {
 			</NavLinks>
 		</Container>
 	);
-}
+};
+const mapStateToProps = (state) => {
+	return {
+		isLoggedIn: state.authReducer.isLoggedIn,
+		error: state.authReducer.error,
+		token: state.authReducer.token,
+	};
+};
+
+export default connect(mapStateToProps, {})(Navbar);

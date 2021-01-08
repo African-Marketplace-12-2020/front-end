@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { signup } from '../../actions/marketActions';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 export const FormGroup = styled.form`
 	color: black;
@@ -31,7 +32,8 @@ export const Input = styled.input`
 `;
 
 const Signup = (props) => {
-	console.log(props);
+	// console.log(props);
+	const { push, go } = useHistory();
 	const [signup, setSignup] = useState({
 		username: '',
 		password: '',
@@ -77,6 +79,21 @@ const Signup = (props) => {
 					onChange={handleSignupChange}
 				/>
 				<button>Signup</button>
+				<div>
+					<h2>Login to your account</h2>
+					{/* <button>
+						<NavLink to='/signup'>Signup</NavLink>
+					</button> */}
+					<button
+						onClick={(e) => {
+							e.preventDefault();
+							go(0);
+							push('/');
+						}}
+					>
+						Login
+					</button>
+				</div>
 			</FormGroup>
 		</div>
 	);

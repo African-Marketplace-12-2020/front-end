@@ -14,6 +14,7 @@ function App(props) {
 	return (
 		<div className='App'>
 			<h1 className='AppTitle'>African Marketplace</h1>
+
 			<Router>
 				<Navbar {...props} />
 				<Switch>
@@ -23,8 +24,12 @@ function App(props) {
 						component={CategoryWrapper}
 					/>
 					<PrivateRoute exact path='/product-list' component={ProductList} />
-					<Route path='/' component={(props) => <Login {...props} />} />
-					<Route path='/signup' component={(props) => <Market {...props} />} />
+					<Route
+						exact
+						path='/signup'
+						component={(props) => <Signup {...props} />}
+					/>
+					<Route exact path='/' component={(props) => <Login {...props} />} />
 				</Switch>
 			</Router>
 		</div>

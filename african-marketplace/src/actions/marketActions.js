@@ -24,80 +24,89 @@ export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const SET_MESSAGE = 'SET_MESSAGE';
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 
+export const fetchData = () => (dispatch) => {
+	dispatch({ type: FETCH_START });
+	setTimeout(() => {
+		axiosWithAuth()
+			.get('https://bw-172-african-marketplace.herokuapp.com/items')
+			.then((res) => {
+				const data = res.data;
+				dispatch({ type: FETCH_SUCCESS, payload: data });
+			})
+			.catch((err) => dispatch({ type: FETCH_FAIL, payload: err }));
+	}, 3000);
+};
 
-export const fetchData = () => dispatch => {
-    dispatch({ type: FETCH_START });
-    setTimeout(() => {
-      axiosWithAuth()
-        .get('https://bw-172-african-marketplace.herokuapp.com/items')
-        .then(res => {
-            const data = res.data
-          dispatch({ type: FETCH_SUCCESS, payload: data })
-        })
-        .catch( err => dispatch({ type: FETCH_FAIL, payload: err }))
-    }, 3000);
-  };
+export const login = (credentials) => (dispatch) => {
+	let logIn = credentials;
+	dispatch({ type: LOGIN_START });
+	return axios
+		.post('https://bw-172-african-marketplace.herokuapp.com/login', logIn)
+		.then((res) => {
+			const token = res.data.token;
+			const data = res.data;
+			localStorage.setItem('token', token);
+			dispatch({ type: LOGIN_SUCCESS, payload: data });
+		})
+		.catch((err) => dispatch({ type: LOGIN_FAIL, payload: err }));
+};
 
-  export const login = (credentials) => (dispatch) => {
-    let logIn = credentials;
-    dispatch({ type: LOGIN_START })
-    return axios.post('https://bw-172-african-marketplace.herokuapp.com/login', logIn)
-    .then(res => {
-        const token = res.data.token;
-        const data = res.data;
-        console.log(res)
-        localStorage.setItem('token', token)
-        dispatch({ type: LOGIN_SUCCESS, payload: data })
-    })
-    .catch( err => dispatch({ type: LOGIN_FAIL, payload: err }))
-  }
+export const signup = (signup) => (dispatch) => {
+	let registration = signup;
 
-  export const signup = (signup) => (dispatch) => {
-    let registration = signup;
+	return axios
+		.post(
+			'https://bw-172-african-marketplace.herokuapp.com/register',
+			registration,
+		)
+		.then((res) => {
+			const token = res.data.token;
+			const data = res.data;
+			console.log(res);
+			localStorage.setItem('token', token);
+			dispatch({ type: REGISTER_SUCCESS, payload: data });
+		})
+		.catch((err) => dispatch({ type: REGISTER_FAIL, payload: err }));
+};
 
-    return axios.post('https://bw-172-african-marketplace.herokuapp.com/register', registration)
-    .then(res => {
-        const token = res.data.token;
-        const data = res.data;
-        console.log(res)
-        localStorage.setItem('token', token)
-        dispatch({ type: REGISTER_SUCCESS, payload: data })
-    })
-    .catch( err => dispatch({ type: REGISTER_FAIL, payload: err }))
-  }
+export const addProduct = (addProduct) => (dispatch) => {
+	let newProduct = addProduct;
+	console.log(newProduct);
+	return axiosWithAuth()
+		.post('https://bw-172-african-marketplace.herokuapp.com/items', newProduct)
+		.then((res) => {
+			const token = res.data.token;
+			const data = res.data;
+			console.log(data);
+			localStorage.setItem('token', token);
+			dispatch({ type: ADD_PRODUCT, payload: data });
+		})
+		.catch((err) => dispatch({ type: FETCH_FAIL, payload: err }));
+};
 
-  export const addProduct = (addProduct) => (dispatch) => {
-    let newProduct = addProduct;
-    console.log(newProduct)
-    return axiosWithAuth().post('https://bw-172-african-marketplace.herokuapp.com/items', newProduct)
-    .then(res => {
-        const token = res.data.token;
-        const data = res.data;
-        console.log(data)
-        localStorage.setItem('token', token)
-        dispatch({ type: ADD_PRODUCT, payload: data })
-    })
-    .catch( err => dispatch({ type: FETCH_FAIL, payload: err }))
-  }
+export const updateProduct = (id) => (dispatch) => {
+	let newProduct = id;
+	console.log(newProduct);
+	axiosWithAuth()
+		.put(
+			`https://bw-172-african-marketplace.herokuapp.com/items/${newProduct.id}`,
+			newProduct,
+		)
+		.then((res) => {
+			//const token = res.data.token;
+			const data = res.data;
+			console.log(res);
+			//localStorage.setItem('token', token)
+			dispatch({ type: UPDATE_PRODUCT, payload: res.data.updatedItem });
+		})
+		.catch((err) => dispatch({ type: FETCH_FAIL, payload: err }));
+};
 
-  export const updateProduct = (id) => (dispatch) => {
-    let newProduct = id;
-    console.log(newProduct)
-    axiosWithAuth().put(`https://bw-172-african-marketplace.herokuapp.com/items/${newProduct.id}`, newProduct)
-    .then(res => {
-      //const token = res.data.token;
-      const data = res.data;
-      console.log(res)
-      //localStorage.setItem('token', token)
-      dispatch({ type: UPDATE_PRODUCT, payload: res.data.updatedItem })
-    })
-    .catch( err => dispatch({ type: FETCH_FAIL, payload: err })) 
-  }
-
-  export const deleteProduct = (id) => (dispatch) => {
-    axiosWithAuth().delete(`https://bw-172-african-marketplace.herokuapp.com/items/${id}`)
-    .then(res => {
-      dispatch({ type: DELETE_PRODUCT, payload: id })
-    })
-    .catch( err => dispatch({ type: FETCH_FAIL, payload: err })) 
-  }
+export const deleteProduct = (id) => (dispatch) => {
+	axiosWithAuth()
+		.delete(`https://bw-172-african-marketplace.herokuapp.com/items/${id}`)
+		.then((res) => {
+			dispatch({ type: DELETE_PRODUCT, payload: id });
+		})
+		.catch((err) => dispatch({ type: FETCH_FAIL, payload: err }));
+};

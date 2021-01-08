@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { login } from '../../actions/marketActions';
@@ -32,7 +32,7 @@ export const Input = styled.input`
 `;
 
 const Login = (props) => {
-	const { push } = useHistory();
+	const { push, go } = useHistory();
 	const [credentials, setCredentials] = useState({});
 
 	const handleChange = (e) => {
@@ -46,15 +46,20 @@ const Login = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		props.login(credentials);
-
 		setCredentials({
 			credentials: {
 				username: '',
 				password: '',
 			},
 		});
-		push('/product-list');
+		console.log(props.isLoggedIn);
 	};
+
+	useEffect(() => {
+		if (props.isLoggedIn === true) {
+			push('/product-list');
+		}
+	}, [this.props.isLoggedIn]);
 
 	return (
 		<div>
@@ -78,9 +83,6 @@ const Login = (props) => {
 				<button>Login</button>
 				<div>
 					<h2>Create account</h2>
-					{/* <button>
-						<NavLink to='/signup'>Signup</NavLink>
-					</button> */}
 					<button
 						onClick={(e) => {
 							e.preventDefault();
@@ -97,9 +99,9 @@ const Login = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		isLoggedIn: state.isLoggedIn,
-		error: state.error,
-		token: state.token,
+		isLoggedIn: state.authReducer.isLoggedIn,
+		error: state.authReducer.error,
+		token: state.authReducer.token,
 	};
 };
 
