@@ -19,7 +19,7 @@ const Container = styled.nav`
 
 const FlexContainer = styled.div`
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
