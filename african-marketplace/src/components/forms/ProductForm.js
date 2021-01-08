@@ -72,7 +72,6 @@ const ProductForm = (props) => {
 
     return (
         <div>
-        <h1>Product Form Component</h1>
           <FormGroup onSubmit={handleSubmit}>
             <h1>Product Form</h1>
             <Input id="label" 

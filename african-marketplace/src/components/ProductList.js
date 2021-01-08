@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 const Container = styled.nav`
   height: 10vh;
-  width: 90%;
+  width: 100%;
   margin: 0.5rem;
   padding: 1rem;
   background: #fff;
@@ -33,7 +33,6 @@ const ProductList = (props) => {
 
     return (
         <div>
-        <h1>Product List</h1>
         <Container>
             <ProductForm />
             <FlexContainer>
