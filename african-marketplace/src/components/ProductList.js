@@ -6,9 +6,8 @@ import ProductForm from '../components/forms/ProductForm';
 import CircleLoader from '../CircleLoader';
 import styled from "styled-components";
 
-const Container = styled.nav`
+const Container = styled.div`
   height: 10vh;
-  width: 100%;
   margin: 0.5rem;
   padding: 1rem;
   background: #fff;
@@ -18,7 +17,6 @@ const Container = styled.nav`
 `;
 
 const FlexContainer = styled.div`
-    margin: 0 auto;
     width: 100%;
     display: flex;
     flex-direction: row;

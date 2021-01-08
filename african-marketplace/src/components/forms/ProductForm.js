@@ -25,7 +25,7 @@ const FlexContainer = styled.div`
 export const FormGroup = styled.form`
 	color: black;
     display: block;
-	  width: 50%;
+	  width: 40%;
     margin: 50px auto;
     padding: 2rem;
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);

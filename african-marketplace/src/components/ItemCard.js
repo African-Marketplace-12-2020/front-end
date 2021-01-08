@@ -8,7 +8,7 @@ import EditProduct from './forms/EditProduct';
 const Container = styled.div`
   border: black solid 2px;
   background-color: #ffefd5;
-  width: 360px;
+  width: 325px;
   border-radius: 10px;
   box-shadow: 2px 2px #77925f;
   border: #77925f solid 1px;
