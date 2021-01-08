@@ -14,14 +14,6 @@ const Container = styled.nav`
   }
 `;
 
-const FlexContainer = styled.div`
-    margin: 0 auto;
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-`;
-
 export const FormGroup = styled.form`
 	color: black;
     display: block;
@@ -31,6 +23,10 @@ export const FormGroup = styled.form`
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    @media screen and (max-width: 768px) {
+      width: 60%;
+      margin: 30px auto;
+    }
 `;
 
 export const Input = styled.input`

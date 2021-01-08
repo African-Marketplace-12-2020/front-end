@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 
 const containerStyle = {
     position: "relative", 
-    width: "40rem", 
-    height: "40rem", 
+    width: "5rem", 
+    height: "5rem", 
     marginLeft: 'auto', 
     marginRight: 'auto',
     display: 'flex',
@@ -15,15 +15,14 @@ const circleStyle = {
     display: "flex",
     justifyContent: 'center',
     alignContent: 'center',
-    width: "20rem", 
-    height: "20rem",
+    width: "5rem", 
+    height: "5rem",
     border: "0.5rem solid #77925f",
     borderTop: "0.5rem solid #000",
     borderRadius: "50%",
-    position: "absolute",
     boxSizing: "border-box",
     top: 0, 
-    left: '10rem',
+    left: '5rem',
     textAlign: 'center'
 }
 

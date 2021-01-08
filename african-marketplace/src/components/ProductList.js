@@ -21,6 +21,14 @@ const FlexContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+`;
+
+const CircleLoaderContainer = styled.div`
+      margin: 0 auto;
 `;
 
 const ProductList = (props) => {
@@ -36,7 +44,7 @@ const ProductList = (props) => {
             <FlexContainer>
 
             {props.isFetching ? (
-            <CircleLoader />
+                    <CircleLoader />
                 ) : ( 
                     props.productsAsProps && props.productsAsProps.map(item => 
                         <div key={item.id}>
