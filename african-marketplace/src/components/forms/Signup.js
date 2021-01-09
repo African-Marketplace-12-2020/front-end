@@ -93,7 +93,6 @@ const Signup = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         isLoggedIn: state.isLoggedIn,
         error: state.error,
@@ -102,3 +101,4 @@ const mapStateToProps = (state) => {
   }
   
   export default connect(mapStateToProps, {signup})(Signup)
+  
