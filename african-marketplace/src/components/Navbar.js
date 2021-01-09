@@ -88,12 +88,6 @@ export default function Navbar(props) {
         <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
             <NavLink to="/product-list">Product List</NavLink>
         </li>
-        <li style={{ color: "white", textDecoration: "none", fontSize: "16px" }}>
-            <NavLink to="/categories-page">Categories</NavLink>
-        </li>
-        <li style={{ color: 'white', textDecoration: 'none', fontSize: '16px' }}>
-			<NavLink to='/market'>Market</NavLink>
-		</li>
       </NavLinks>
     </Container>
   );
