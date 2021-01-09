@@ -100,13 +100,13 @@ export default function Navbar() {
 						<NavLink to='/product-list'>Product List</NavLink>
 					</li>
 				) : null}
-				{localStorage.getItem('token') ? (
+				{/*localStorage.getItem('token') ? (
 					<li
 						style={{ color: 'white', textDecoration: 'none', fontSize: '16px' }}
 					>
 						<NavLink to='/categories-page'>Categories</NavLink>
 					</li>
-				) : null}
+				) : null*/}
 				{/* <li
 					style={{ color: 'white', textDecoration: 'none', fontSize: '16px' }}
 				>

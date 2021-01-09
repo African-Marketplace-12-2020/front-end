@@ -17,11 +17,6 @@ function App(props) {
 			<Router>
 				<Navbar {...props} />
 				<Switch>
-					<PrivateRoute
-						exact
-						path='/categories-page'
-						component={CategoryWrapper}
-					/>
 					<PrivateRoute exact path='/product-list' component={ProductList} />
 					<Route path='/' component={(props) => <Login {...props} />} />
 					<Route path='/signup' component={(props) => <Market {...props} />} />
