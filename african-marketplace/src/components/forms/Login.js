@@ -78,16 +78,8 @@ const Login = (props) => {
 				<button>Login</button>
 				<div>
 					<h2>Create account</h2>
-					{/* <button>
+					<button>
 						<NavLink to='/signup'>Signup</NavLink>
-					</button> */}
-					<button
-						onClick={(e) => {
-							e.preventDefault();
-							push('/signup');
-						}}
-					>
-						Signup
 					</button>
 				</div>
 			</FormGroup>

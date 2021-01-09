@@ -47,6 +47,7 @@ const Signup = (props) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		console.log("Click")
 		props.signup(signup);
 		setSignup({
 			signup: {
