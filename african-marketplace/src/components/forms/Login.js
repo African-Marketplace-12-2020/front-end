@@ -59,7 +59,7 @@ const Login = (props) => {
 		if (props.isLoggedIn === true) {
 			push('/product-list');
 		}
-	}, [this.props.isLoggedIn]);
+	}, [props.isLoggedIn]);
 
 	return (
 		<div>

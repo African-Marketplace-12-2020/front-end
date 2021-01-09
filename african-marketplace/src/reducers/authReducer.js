@@ -5,6 +5,7 @@ import {
 	LOGOUT,
 	REGISTER_SUCCESS,
 	REGISTER_FAIL,
+	RELOAD_OFF,
 } from '../actions/marketActions';
 
 const initialState = {
@@ -54,6 +55,11 @@ export default function (state = initialState, action) {
 				isLoggedIn: false,
 			};
 		case REGISTER_FAIL:
+			return {
+				...state,
+				isLoggedIn: false,
+			};
+		case RELOAD_OFF:
 			return {
 				...state,
 				isLoggedIn: false,

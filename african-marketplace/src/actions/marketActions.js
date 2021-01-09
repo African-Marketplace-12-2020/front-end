@@ -24,6 +24,8 @@ export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const SET_MESSAGE = 'SET_MESSAGE';
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 
+export const RELOAD_OFF = 'RELOAD_OFF';
+
 export const fetchData = () => (dispatch) => {
 	dispatch({ type: FETCH_START });
 	setTimeout(() => {
@@ -109,4 +111,8 @@ export const deleteProduct = (id) => (dispatch) => {
 			dispatch({ type: DELETE_PRODUCT, payload: id });
 		})
 		.catch((err) => dispatch({ type: FETCH_FAIL, payload: err }));
+};
+
+export const reloadOff = () => (dispatch) => {
+	dispatch({ type: RELOAD_OFF });
 };

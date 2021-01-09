@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { reloadOff } from '../actions/marketActions';
+
 const Container = styled.nav`
 	height: 10vh;
 	width: 100%;
@@ -66,6 +68,13 @@ const Navbar = (props) => {
 		}
 	};
 
+	useEffect(() => {
+		if (props.isLoggedIn === true) {
+			push('/product-list');
+			reloadOff();
+		}
+	}, [props.isLoggedIn]);
+
 	const logout = () => {
 		localStorage.removeItem('token');
 		go(0);
@@ -125,4 +134,4 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, {})(Navbar);
+export default connect(mapStateToProps, { reloadOff })(Navbar);
