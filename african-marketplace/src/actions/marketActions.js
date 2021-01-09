@@ -54,7 +54,7 @@ export const fetchData = () => dispatch => {
 
   export const signup = (signup) => (dispatch) => {
     let registration = signup;
-
+    console.log(registration)
     return axios.post('https://bw-172-african-marketplace.herokuapp.com/register', registration)
     .then(res => {
         const token = res.data.token;
