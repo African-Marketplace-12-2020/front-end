@@ -61,6 +61,8 @@ const ItemCard = (props) => {
         }}>
         <Text>Description: {props.data.description}</Text>
         <Text>Price: ${props.data.price}</Text>
+        <Text>Location: {props.data.location}</Text>
+        <Text>Category: {props.data.category}</Text>
         
       </div>
       {!editing && (

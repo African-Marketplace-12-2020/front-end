@@ -91,6 +91,39 @@ const ProductForm = (props) => {
                 value={values.price || ''}
                 onChange={handleProductChange}
             />
+
+
+          <div className="form-group">
+                <label>Location:    </label>
+                <select
+                    className="form-control" 
+                    onChange={e =>
+                      setValues({ ...values, location: e.target.value })
+                    }
+                    value={values.location}
+                >
+                  <option value="">--Please choose a location--</option>
+                  <option value="Bungoma">Bungoma</option>
+                  <option value="Isiolo">Isiolo</option>
+                  <option value="Nairobi">Nairobi</option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label>Category:    </label>
+                <select
+                    className="form-control" 
+                    onChange={e =>
+                      setValues({ ...values, category: e.target.value })
+                    }
+                    value={values.category}
+                >
+                  <option value="">--Please choose a Category--</option>
+                  <option value="1">Clothing & Apparel</option>
+                  <option value="2">Authentic Artwork</option>
+                  <option value="3">Food Items</option>
+                </select>
+              </div>
             <button>Submit</button>
             </FormGroup>
         </div>
