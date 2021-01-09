@@ -79,7 +79,7 @@ const EditProduct = (props) => {
                 value={values.price || ''}
                 onChange={handleChanges}
             />
-                      <div className="form-group">
+            <div className="form-group">
                 <label>Location:    </label>
                 <select
                     className="form-control" 

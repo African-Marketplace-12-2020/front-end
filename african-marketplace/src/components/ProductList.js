@@ -59,7 +59,7 @@ const ProductList = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
+    //console.log(state)
     return {
         productsAsProps: state.marketReducer.data,
         isFetching: state.marketReducer.isFetching,

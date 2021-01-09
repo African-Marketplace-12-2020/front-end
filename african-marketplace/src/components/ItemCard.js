@@ -60,7 +60,7 @@ const ItemCard = (props) => {
           marginLeft: "5px",
         }}>
         <Text>Description: {props.data.description}</Text>
-        <Text>Price: ${props.data.price}.00</Text>
+        <Text>Price: ${props.data.price}</Text>
         <Text>Location: {props.data.location}</Text>
         <Text>Category: {props.data.category}</Text>
         
