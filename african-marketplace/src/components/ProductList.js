@@ -27,10 +27,6 @@ const FlexContainer = styled.div`
       }
 `;
 
-const CircleLoaderContainer = styled.div`
-      margin: 0 auto;
-`;
-
 const ProductList = (props) => {
     const [editing, setEditing] = useState();
     useEffect(() => {
