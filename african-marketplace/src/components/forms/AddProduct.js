@@ -32,10 +32,6 @@ export const Input = styled.input`
 `;
 
 const AddProduct = (props) => {
-    /**
-     * actual product values: 
-     * name, description, location, price, plus an email
-     */
     const [addedProduct, setAddedProduct] = useState({
         name: '',
         description: '',
