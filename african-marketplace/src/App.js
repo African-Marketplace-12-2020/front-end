@@ -10,7 +10,6 @@ import Signup from './components/forms/Signup';
 import ProductList from './components/ProductList';
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
-import CategoryWrapper from './components/CategoryWrapper';
 import './App.css';
 
 function App(props) {
@@ -21,7 +20,6 @@ function App(props) {
         <Router>
           <Navbar {...props} />
           <Switch>
-            <PrivateRoute exact path="/categories-page" component={CategoryWrapper} />
             <PrivateRoute exact path="/product-list" component={ProductList} />
             <Route path="/login" component={props => <Login {...props} />} />
             <Route path="/signup" component={props => <Signup {...props} />} />
