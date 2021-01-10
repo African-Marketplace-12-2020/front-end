@@ -40,7 +40,6 @@ export const Input = styled.input`
 `;
 
 const ProductForm = (props) => {
-    //console.log(props)
     const [values, setValues] = useState({
       name: '',
       description: '',
@@ -119,9 +118,9 @@ const ProductForm = (props) => {
                     value={values.category}
                 >
                   <option value="">--Please choose a Category--</option>
-                  <option value="1">Clothing & Apparel</option>
-                  <option value="2">Authentic Artwork</option>
-                  <option value="3">Food Items</option>
+                  <option value="Clothing">Clothing & Apparel</option>
+                  <option value="Artwork">Authentic Artwork</option>
+                  <option value="Food">Food Items</option>
                 </select>
               </div>
             <button>Submit</button>
