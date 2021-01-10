@@ -55,7 +55,6 @@ const NavLinks = styled.ul`
 `;
 
 export default function Navbar(props) {
-	//console.log(props)
   const [display, setDisplay] = useState(false);
   const toggleDisplay = () => {
     if (display) {
