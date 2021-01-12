@@ -1,6 +1,5 @@
 import axios from 'axios';
 import axiosWithAuth from '../utils/axiosWithAuth';
-//replace axios with axiosWithAuth() for the addProduct, updateProduct, and deleteProduct methods
 
 export const FETCH_START = 'FFETCH_TART';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
